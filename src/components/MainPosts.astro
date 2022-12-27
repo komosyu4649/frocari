@@ -1,0 +1,264 @@
+---
+import type { Post } from '../../type'
+import MainPost from './MainPost.astro'
+import Pagination from './Pagination.astro'
+
+const posts: Post[] = [
+  {
+    href: '/',
+    imgSrc: '/asset/home/post_01.jpg',
+    imgAlt: 'post1',
+    categoryName: 'コラム',
+    categoryHref: '/column/',
+    timeName: '2023.01.01',
+    timeDate: '2023-01-01',
+    title: '自分の考えているキャリアプランを発表します',
+    tags: [
+      {
+        href: '/career/',
+        name: '#キャリア',
+      },
+      {
+        href: '/nensyu/',
+        name: '#年収',
+      },
+      {
+        href: '/tensyoku/',
+        name: '#転職',
+      },
+    ],
+  },
+  {
+    href: '/',
+    imgSrc: '/asset/home/post_02.jpg',
+    imgAlt: 'post1',
+    categoryName: 'コラム',
+    categoryHref: '/column/',
+    timeName: '2023.01.01',
+    timeDate: '2023-01-01',
+    title: '自分の考えているキャリアプランを発表します',
+    tags: [
+      {
+        href: '/career/',
+        name: '#キャリア',
+      },
+      {
+        href: '/nensyu/',
+        name: '#年収',
+      },
+      {
+        href: '/tensyoku/',
+        name: '#転職',
+      },
+    ],
+  },
+  {
+    href: '/',
+    imgSrc: '/asset/home/post_03.jpg',
+    imgAlt: 'post1',
+    categoryName: 'コラム',
+    categoryHref: '/column/',
+    timeName: '2023.01.01',
+    timeDate: '2023-01-01',
+    title: '自分の考えているキャリアプランを発表します',
+    tags: [
+      {
+        href: '/career/',
+        name: '#キャリア',
+      },
+      {
+        href: '/nensyu/',
+        name: '#年収',
+      },
+      {
+        href: '/tensyoku/',
+        name: '#転職',
+      },
+    ],
+  },
+  {
+    href: '/',
+    imgSrc: '/asset/home/post_04.jpg',
+    imgAlt: 'post1',
+    categoryName: 'コラム',
+    categoryHref: '/column/',
+    timeName: '2023.01.01',
+    timeDate: '2023-01-01',
+    title: '自分の考えているキャリアプランを発表します',
+    tags: [
+      {
+        href: '/career/',
+        name: '#キャリア',
+      },
+      {
+        href: '/nensyu/',
+        name: '#年収',
+      },
+      {
+        href: '/tensyoku/',
+        name: '#転職',
+      },
+    ],
+  },
+  {
+    href: '/',
+    imgSrc: '/asset/home/post_05.jpg',
+    imgAlt: 'post1',
+    categoryName: 'コラム',
+    categoryHref: '/column/',
+    timeName: '2023.01.01',
+    timeDate: '2023-01-01',
+    title: '自分の考えているキャリアプランを発表します',
+    tags: [
+      {
+        href: '/career/',
+        name: '#キャリア',
+      },
+      {
+        href: '/nensyu/',
+        name: '#年収',
+      },
+      {
+        href: '/tensyoku/',
+        name: '#転職',
+      },
+    ],
+  },
+  {
+    href: '/',
+    imgSrc: '/asset/home/post_06.jpg',
+    imgAlt: 'post1',
+    categoryName: 'コラム',
+    categoryHref: '/column/',
+    timeName: '2023.01.01',
+    timeDate: '2023-01-01',
+    title: '自分の考えているキャリアプランを発表します',
+    tags: [
+      {
+        href: '/career/',
+        name: '#キャリア',
+      },
+      {
+        href: '/nensyu/',
+        name: '#年収',
+      },
+      {
+        href: '/tensyoku/',
+        name: '#転職',
+      },
+    ],
+  },
+  {
+    href: '/',
+    imgSrc: '/asset/home/post_07.jpg',
+    imgAlt: 'post1',
+    categoryName: 'コラム',
+    categoryHref: '/column/',
+    timeName: '2023.01.01',
+    timeDate: '2023-01-01',
+    title: '自分の考えているキャリアプランを発表します',
+    tags: [
+      {
+        href: '/career/',
+        name: '#キャリア',
+      },
+      {
+        href: '/nensyu/',
+        name: '#年収',
+      },
+      {
+        href: '/tensyoku/',
+        name: '#転職',
+      },
+    ],
+  },
+  {
+    href: '/',
+    imgSrc: '/asset/home/post_08.jpg',
+    imgAlt: 'post1',
+    categoryName: 'コラム',
+    categoryHref: '/column/',
+    timeName: '2023.01.01',
+    timeDate: '2023-01-01',
+    title: '自分の考えているキャリアプランを発表します',
+    tags: [
+      {
+        href: '/career/',
+        name: '#キャリア',
+      },
+      {
+        href: '/nensyu/',
+        name: '#年収',
+      },
+      {
+        href: '/tensyoku/',
+        name: '#転職',
+      },
+    ],
+  },
+  {
+    href: '/',
+    imgSrc: '/asset/home/post_09.jpg',
+    imgAlt: 'post1',
+    categoryName: 'コラム',
+    categoryHref: '/column/',
+    timeName: '2023.01.01',
+    timeDate: '2023-01-01',
+    title: '自分の考えているキャリアプランを発表します',
+    tags: [
+      {
+        href: '/career/',
+        name: '#キャリア',
+      },
+      {
+        href: '/nensyu/',
+        name: '#年収',
+      },
+      {
+        href: '/tensyoku/',
+        name: '#転職',
+      },
+    ],
+  },
+  {
+    href: '/',
+    imgSrc: '/asset/home/post_10.jpg',
+    imgAlt: 'post1',
+    categoryName: 'コラム',
+    categoryHref: '/column/',
+    timeName: '2023.01.01',
+    timeDate: '2023-01-01',
+    title: '自分の考えているキャリアプランを発表します',
+    tags: [
+      {
+        href: '/career/',
+        name: '#キャリア',
+      },
+      {
+        href: '/nensyu/',
+        name: '#年収',
+      },
+      {
+        href: '/tensyoku/',
+        name: '#転職',
+      },
+    ],
+  },
+]
+---
+
+<div class="container">
+  <ul class="list">
+    <MainPost posts={posts} />
+  </ul>
+  <Pagination />
+</div>
+
+<style lang="scss">
+  .list {
+    display: grid;
+    // grid-template-columns: repeat((2, 44rem));
+    grid-template-columns: repeat((2, 1fr));
+    gap: 3rem;
+  }
+</style>

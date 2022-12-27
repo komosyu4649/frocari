@@ -1,0 +1,46 @@
+---
+const pageNumbers = [
+  { number: 1 },
+  { number: 2 },
+  { number: 3 },
+  { number: 4 },
+  { number: 5 },
+]
+---
+
+<div class="container">
+  <ul class="list">
+    {
+      pageNumbers.map((pageNumber) => (
+        <li class="item">
+          <a href={`/${pageNumber.number}/`} class="itemLink">
+            {pageNumber.number}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</div>
+
+<style lang="scss">
+  .container {
+    margin-top: 5rem;
+  }
+  .list {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+  .itemLink {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 4rem;
+    height: 4rem;
+    font-size: 1.4rem;
+    border: 1px solid var(--color-text-black);
+    border-radius: 50%;
+  }
+</style>

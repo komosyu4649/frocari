@@ -1,0 +1,41 @@
+---
+import { Image } from '@astrojs/image/components'
+
+const banners = [
+  {
+    href: 'https://komosyu.dev',
+    imgSrc: '/asset/common/banner_komosyu.jpg',
+    imgAlt: 'komosyu blog',
+  },
+]
+---
+
+<div class="container">
+  <ul class="list">
+    {
+      banners.map((banner) => (
+        <li class="item">
+          <a href={banner.href} rel="noopener noreferrer" class="itemLink">
+            <Image
+              src={banner.imgSrc}
+              alt={banner.imgAlt}
+              width="280"
+              height="160"
+            />
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</div>
+
+<style>
+  .container {
+    margin-top: 8rem;
+  }
+  .itemLink {
+    display: block;
+    width: 100%;
+    height: 16rem;
+  }
+</style>

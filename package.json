@@ -11,6 +11,13 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^1.7.2"
+    "@astrojs/image": "^0.12.1",
+    "astro": "^1.7.2",
+    "sharp": "^0.31.3"
+  },
+  "devDependencies": {
+    "prettier": "^2.8.1",
+    "prettier-plugin-astro": "^0.7.0",
+    "sass": "^1.57.1"
   }
 }

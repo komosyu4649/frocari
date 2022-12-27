@@ -1,0 +1,58 @@
+// @use 'variables' as var;
+
+:root {
+  // -black: #242422;
+  --color-black: #05091e;
+  --color-text-black: #1D1D1F;
+  --color-white: #FFFFFF;
+  --color-gray: #F5F5F5;
+}
+
+::selection {
+  color: #FFFFFF;
+  background: #242422;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体";
+  background-color: #FFFFFF;
+  color: #1D1D1F;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+  font-size: 0.69445vw;
+  scroll-behavior: smooth;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#wrapper {
+  width: 84rem;
+  margin-inline: auto;
+}
+
+main {
+  min-height: 65vh;
+}
+
+@media screen and (max-width: 768px) {
+  html {
+    font-size: 2.4155vw;
+  }
+  #wrapper {
+    width: 36rem;
+    margin-inline: auto;
+  }
+}

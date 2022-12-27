@@ -1,0 +1,83 @@
+---
+const keywords = [
+  {
+    href: '/career/',
+    name: '#キャリア',
+  },
+  {
+    href: '/nensyu/',
+    name: '#年収',
+  },
+  {
+    href: '/tensyoku/',
+    name: '#転職',
+  },
+  {
+    href: '/career/',
+    name: '#キャリア',
+  },
+  {
+    href: '/career/',
+    name: '#キャリア',
+  },
+  {
+    href: '/career/',
+    name: '#キャリア',
+  },
+  {
+    href: '/tensyoku/',
+    name: '#転職',
+  },
+  {
+    href: '/tensyoku/',
+    name: '#転職',
+  },
+  {
+    href: '/tensyoku/',
+    name: '#転職',
+  },
+]
+---
+
+<div class="container">
+  <h2 class="title">キーワード</h2>
+  <div class="main">
+    <ul class="mainList">
+      {
+        keywords.map((keyword) => (
+          <li class="mainItem">
+            <a href={keyword.href} class="mainItemLink">
+              {keyword.name}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</div>
+
+<style lang="scss">
+  .container {
+    margin-top: 6rem;
+  }
+  .title {
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+    font-weight: bold;
+    line-height: 1.5;
+  }
+  .main {
+    border: 1px solid var(--color-black);
+    border-radius: 1rem;
+  }
+  .mainList {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    padding: 1.5rem;
+  }
+  .mainItemLink {
+    font-size: 1.2rem;
+  }
+</style>

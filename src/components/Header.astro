@@ -1,0 +1,89 @@
+---
+// import { Image } from '@astrojs/image/components';
+
+const menus = [
+  {
+    name: 'キャリアコラム',
+    href: '/column/',
+  },
+  {
+    name: '転職サイト',
+    href: '/site/',
+  },
+  {
+    name: '転職エージェント',
+    href: '/agent/',
+  },
+  {
+    name: '作業ツール',
+    href: '/tool/',
+  },
+  {
+    name: '書評',
+    href: '/book/',
+  },
+  {
+    name: 'frocariについて',
+    href: '/about/',
+  },
+]
+---
+
+<header class="container">
+  <div class="inner">
+    <!-- logo -->
+    <h1 class="logo">
+      <a href="/" class="logoLink">
+        <!-- <Image src="/asset/logo.svg" alt="frocari" width="56" height="17" /> -->
+        <img
+          src="/asset/common/logo.svg"
+          alt="frocari"
+          width="56"
+          height="17"
+          class="logoLinkInside"
+        />
+      </a>
+    </h1>
+    <!-- menu -->
+    <nav class="menu">
+      <ul class="menuList">
+        {
+          menus.map((menu) => (
+            <li class="menuItem">
+              <a href={menu.href} class="menuItemLink">
+                {menu.name}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style lang="scss">
+  .inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .logoLink {
+    display: inline-block;
+    padding: 2.5rem;
+  }
+  .menu {
+    width: 100%;
+    border-top: 1px solid var(--color-black);
+    border-bottom: 1px solid var(--color-black);
+  }
+  .menuList {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  .menuItemLink {
+    display: inline-block;
+    padding: 2rem;
+    font-size: 1.4rem;
+  }
+</style>
