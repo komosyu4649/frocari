@@ -1,0 +1,41 @@
+---
+const { kvProps } = Astro.props
+console.log(kvProps)
+---
+
+<div class="container">
+  <h1 class="title">
+    <span class="titleEn">{kvProps.kvTitleEn}</span>
+    <span class="titleJa">{kvProps.kvTitleJa}</span>
+  </h1>
+</div>
+
+<style lang="scss">
+  .container {
+    position: relative;
+    margin-bottom: 4rem;
+    padding-bottom: 2rem;
+    &::before {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      content: '';
+      width: 4rem;
+      height: 1px;
+      background-color: var(--color-text-black);
+    }
+  }
+  .title {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .titleEn {
+    font-size: 1.4rem;
+    font-family: 'Urbanist', sans-serif;
+  }
+  .titleJa {
+    font-size: 2.6rem;
+    font-weight: bold;
+  }
+</style>

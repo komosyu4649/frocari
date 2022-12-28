@@ -1,0 +1,27 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import MainPosts from '../../components/MainPosts.astro'
+import SideBar from '../../components/SideBar.astro'
+
+const kvTitleEn = 'category'
+const kvTitleJa = 'キャリアコラム'
+const kvProps = { kvTitleEn, kvTitleJa }
+---
+
+<Layout title={`${kvTitleJa}のページ`}>
+  <main class="main">
+    <MainPosts kvProps={kvProps} />
+    <SideBar />
+  </main>
+</Layout>
+
+<style lang="scss">
+  .main {
+    display: grid;
+    grid-template-columns: 1fr 28rem;
+    gap: 7.5rem;
+    width: 126.5rem;
+    // margin: 8rem auto 0;
+    margin: 0 auto;
+  }
+</style>

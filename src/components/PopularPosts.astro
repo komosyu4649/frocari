@@ -1,2 +1,87 @@
 ---
+import { Image } from '@astrojs/image/components'
+
+const posts = [
+  {
+    imgSrc: '/asset/home/post_01.jpg',
+    imgAlt: 'post1',
+    title: '自分の考えているキャリアプランを発表します',
+  },
+  {
+    imgSrc: '/asset/home/post_02.jpg',
+    imgAlt: 'post2',
+    title: '自分の考えているキャリアプランを発表します',
+  },
+  {
+    imgSrc: '/asset/home/post_03.jpg',
+    imgAlt: 'post3',
+    title: '自分の考えているキャリアプランを発表します',
+  },
+]
 ---
+
+<div class="container">
+  <h2 class="title">人気の記事</h2>
+  <div class="main">
+    <ul class="mainList">
+      {
+        posts.map((post) => (
+          <li class="mainItem">
+            <a href="" class="mainItemLink">
+              <Image
+                src={post.imgSrc}
+                alt={post.imgAlt}
+                width={90}
+                height={90}
+                class="mainItemLinkImg"
+              />
+              <div class="mainItemLinkContent">
+                <p class="mainItemLinkContentTitle">{post.title}</p>
+              </div>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</div>
+
+<style lang="scss">
+  .container {
+    margin-top: 8rem;
+  }
+  .title {
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+    font-weight: bold;
+    line-height: 1.5;
+  }
+  .mainList {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+  }
+  .mainItemLink {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .mainItemLinkImg {
+    width: 9rem;
+    height: 9rem;
+    border-radius: 3rem;
+  }
+  .mainItemLinkContentTitle {
+    display: inline;
+    font-size: 1.4rem;
+    font-weight: bold;
+    background-image: linear-gradient(
+      var(--color-text-black),
+      var(--color-text-black)
+    );
+    background-repeat: no-repeat;
+    background-size: 100% 1px;
+    background-position: 0 100%;
+  }
+</style>

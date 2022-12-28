@@ -1,7 +1,9 @@
 ---
 import type { Post } from '../../type'
+import Kv from './Kv.astro'
 import MainPost from './MainPost.astro'
 import Pagination from './Pagination.astro'
+import PopularPosts from './PopularPosts.astro'
 
 const posts: Post[] = [
   {
@@ -245,20 +247,29 @@ const posts: Post[] = [
     ],
   },
 ]
+
+const { kvProps } = Astro.props
+console.log(kvProps)
 ---
 
 <div class="container">
+  {kvProps && <Kv kvProps={kvProps} />}
   <ul class="list">
     <MainPost posts={posts} />
   </ul>
   <Pagination />
+  <PopularPosts />
 </div>
 
 <style lang="scss">
+  .container {
+    margin-top: 8rem;
+  }
   .list {
     display: grid;
     // grid-template-columns: repeat((2, 44rem));
     grid-template-columns: repeat((2, 1fr));
     gap: 3rem;
+    // gap: 3rem 4rem;
   }
 </style>

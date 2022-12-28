@@ -1,0 +1,91 @@
+---
+const menus = [
+  {
+    name: 'キャリアコラム',
+    href: '/column/',
+  },
+  {
+    name: '転職サイト',
+    href: '/site/',
+  },
+  {
+    name: '転職エージェント',
+    href: '/agent/',
+  },
+  {
+    name: '作業ツール',
+    href: '/tool/',
+  },
+  {
+    name: '書評',
+    href: '/book/',
+  },
+  {
+    name: 'frocariについて',
+    href: '/about/',
+  },
+]
+---
+
+<footer class="container">
+  <nav class="menu">
+    <ul class="menuList">
+      {
+        menus.map((menu) => (
+          <li class="menuItem">
+            <a href={menu.href} class="menuItemLink">
+              {menu.name}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+  <small class="copy">Copyright © 2021 frocari</small>
+</footer>
+
+<style lang="scss">
+  .container {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: 12rem 0 2rem;
+  }
+  .menu {
+    margin-bottom: 3rem;
+  }
+  .menuList {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  .menuItem {
+    &:last-child {
+      .menuItemLink {
+        &::before {
+          content: none;
+        }
+      }
+    }
+  }
+  .menuItemLink {
+    position: relative;
+    display: inline-block;
+    padding: 2rem;
+    font-size: 1.4rem;
+    &::before {
+      position: absolute;
+      top: calc(50% - 0.75rem);
+      right: 0;
+      content: '';
+      width: 1px;
+      height: 1.5rem;
+      background-color: var(--color-text-black);
+    }
+  }
+  .copy {
+    font-size: 1.2rem;
+    font-family: 'Urbanist', sans-serif;
+  }
+</style>
