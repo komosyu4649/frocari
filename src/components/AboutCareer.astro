@@ -1,0 +1,100 @@
+---
+const dlItems = [
+  {
+    dt: '2018年',
+    dd: [
+      {
+        text: '大学卒業',
+      },
+      {
+        text: '新卒で都内百貨店の婦人服売り場に勤務',
+      },
+    ],
+  },
+  {
+    dt: '2019年',
+    dd: [
+      {
+        text: '第二新卒として再生可能エネルギーと農業の会社に転職し、法人営業を担当',
+      },
+      {
+        text: 'この時に独学でマークアップを学びはじめる',
+      },
+    ],
+  },
+  {
+    dt: '2020年',
+    dd: [
+      {
+        text: '副業で細々とはじめたWeb制作の仕事でしたが、続けていく中で品質の高いWebサイトを作りたくてWeb制作会社に転職',
+      },
+    ],
+  },
+  {
+    dt: '2023年',
+    dd: [
+      {
+        text: '3年ほど勤めているWeb制作会社でのWebディベロッパーからフロントエンドエンジニアへの転職活動をするので、その経験をキャリアアップしたい人に向けてfrocariで発信',
+      },
+    ],
+  },
+]
+---
+
+<section class="container">
+  <h2 class="c-title__md title">経歴</h2>
+  <div class="main">
+    {
+      dlItems.map((dlItem) => (
+        <dl class="mainDl">
+          <dt class="mainDt">{dlItem.dt}</dt>
+          <dd class="mainDd">
+            {dlItem.dd.map((ddItem) => (
+              <p class="c-text__sm mainDdText">{ddItem.text}</p>
+            ))}
+          </dd>
+        </dl>
+      ))
+    }
+  </div>
+</section>
+
+<style lang="scss">
+  .container {
+    margin-top: 8rem;
+  }
+  .title {
+    margin-bottom: 1.5rem;
+  }
+  .mainDl {
+    position: relative;
+    display: grid;
+    grid-template-columns: 10rem 1fr;
+    padding-bottom: 3rem;
+    &:last-child {
+      padding: 0;
+      .mainDt {
+        &:before {
+          content: none;
+        }
+      }
+    }
+  }
+  .mainDt {
+    height: fit-content;
+    font-size: 1.4rem;
+    font-family: 'Urbanist', sans-serif;
+    &::before {
+      position: absolute;
+      top: 3rem;
+      left: 1rem;
+      content: '';
+      width: 1px;
+      height: calc(100% - 4rem);
+      background-color: var(--color-black);
+    }
+  }
+  .mainDd {
+    margin: 0;
+  }
+</style>

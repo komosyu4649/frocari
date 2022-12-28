@@ -1,0 +1,23 @@
+---
+import AboutCareer from './AboutCareer.astro'
+import AboutContact from './AboutContact.astro'
+import AboutLink from './AboutLink.astro'
+import AboutProfile from './AboutProfile.astro'
+import Kv from './Kv.astro'
+
+const { kvProps } = Astro.props
+---
+
+<div class="container">
+  <Kv kvProps={kvProps} />
+  <AboutProfile />
+  <AboutCareer />
+  <AboutLink />
+  <AboutContact />
+</div>
+
+<style lang="scss">
+  .container {
+    margin-top: 8rem;
+  }
+</style>

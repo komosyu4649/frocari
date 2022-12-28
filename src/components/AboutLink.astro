@@ -1,0 +1,50 @@
+---
+const linkItems = [
+  {
+    name: 'twitter',
+    url: 'https://twitter.com/komosyu4649',
+  },
+  {
+    name: 'website',
+    url: 'https://www.komosyu.dev/',
+  },
+]
+---
+
+<section class="container">
+  <h2 class="c-title__md title">リンク</h2>
+  <div class="main">
+    <ul class="mainList">
+      {
+        linkItems.map((linkItem) => (
+          <li class="mainItem">
+            <a href={linkItem.url} class="c-text__sm mainItemLink">
+              <span class="mainItemLinkName">{linkItem.name}:</span>
+              <span class="c-text__link mainItemLinkUrl">{linkItem.url}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style lang="scss">
+  .container {
+    margin-top: 8rem;
+  }
+  .title {
+    margin-bottom: 1.5rem;
+  }
+  .main {
+    margin: 0 1.5rem;
+  }
+  .mainList {
+    display: grid;
+    grid-template-columns: auto;
+    gap: 0.25rem;
+  }
+  .mainItem {
+    list-style-type: disc;
+  }
+</style>

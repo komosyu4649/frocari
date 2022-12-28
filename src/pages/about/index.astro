@@ -1,0 +1,29 @@
+---
+import AboutMain from '../../components/AboutMain.astro'
+import Kv from '../../components/Kv.astro'
+import SideBar from '../../components/SideBar.astro'
+import Layout from '../../layouts/Layout.astro'
+
+const kvTitleEn = 'about'
+const kvTitleJa = 'frocariについて'
+const kvProps = { kvTitleEn, kvTitleJa }
+---
+
+<Layout title="about">
+  <main class="container">
+    <div class="main">
+      <AboutMain kvProps={kvProps} />
+    </div>
+    <SideBar />
+  </main>
+</Layout>
+
+<style lang="scss">
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 28rem;
+    gap: 7.5rem;
+    width: 126.5rem;
+    margin: 0 auto;
+  }
+</style>

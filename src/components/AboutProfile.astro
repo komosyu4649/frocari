@@ -1,0 +1,53 @@
+---
+import { Image } from '@astrojs/image/components'
+---
+
+<section class="container">
+  <h2 class="c-title__md title">運営者</h2>
+  <div class="main">
+    <Image
+      src="/asset/img/home/post_01.jpg"
+      alt=""
+      width={200}
+      height={200}
+      class="mainThumbnail"
+    />
+    <div class="mainContent">
+      <h3 class="mainContentName">komosyu</h3>
+      <p class="c-text__sm mainContentDescription">
+        1995年生まれ。<br />
+        Web制作会社で3年程度勤務。<br />
+        制作会社のWebディベロッパーからフロントエンドエンジニアとして転職し、年収を上げた経験を元に「frocari」を運営。<br
+        />
+        自身の経験をもとに、市場価値を向上させたいWebディベロッパー・コーダーのキャリアに役立つ情報を発信。
+      </p>
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  .container {
+    margin-top: 8rem;
+  }
+  .title {
+    margin-bottom: 1.5rem;
+  }
+  .main {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 2.5rem;
+    // margin-top: 8rem;
+  }
+  .mainThumbnail {
+    width: 20rem;
+    height: 20rem;
+  }
+  .mainContentName {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    font-weight: bold;
+    font-family: 'Urbanist', sans-serif;
+  }
+  .mainContentDescription {
+  }
+</style>
