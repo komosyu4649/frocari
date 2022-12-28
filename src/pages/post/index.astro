@@ -1,0 +1,23 @@
+---
+import Layout from '../../layouts/Layout.astro'
+
+import SideBar from '../../components/SideBar.astro'
+import PostContent from '../../components/PostContent.astro'
+---
+
+<Layout title={}>
+  <main class="main">
+    <PostContent />
+    <SideBar />
+  </main>
+</Layout>
+
+<style lang="scss">
+  .main {
+    display: grid;
+    grid-template-columns: 1fr 28rem;
+    gap: 7.5rem;
+    width: 126.5rem;
+    margin: 0 auto;
+  }
+</style>
