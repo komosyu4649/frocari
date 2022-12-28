@@ -3,17 +3,21 @@ import Layout from '../../layouts/Layout.astro'
 
 import SideBar from '../../components/SideBar.astro'
 import PostContent from '../../components/PostContent.astro'
+import RelationPosts from '../../components/RelationPosts.astro'
 ---
 
 <Layout title={}>
-  <main class="main">
-    <PostContent />
+  <main class="container">
+    <div class="main">
+      <PostContent />
+      <RelationPosts />
+    </div>
     <SideBar />
   </main>
 </Layout>
 
 <style lang="scss">
-  .main {
+  .container {
     display: grid;
     grid-template-columns: 1fr 28rem;
     gap: 7.5rem;

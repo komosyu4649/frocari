@@ -249,7 +249,6 @@ const posts: Post[] = [
 ]
 
 const { kvProps } = Astro.props
-console.log(kvProps)
 ---
 
 <div class="container">
@@ -258,7 +257,7 @@ console.log(kvProps)
     <MainPost posts={posts} />
   </ul>
   <Pagination />
-  <PopularPosts />
+  <!-- <PopularPosts /> -->
 </div>
 
 <style lang="scss">

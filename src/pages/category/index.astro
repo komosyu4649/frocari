@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro'
 import MainPosts from '../../components/MainPosts.astro'
 import SideBar from '../../components/SideBar.astro'
+import PopularPosts from '../../components/PopularPosts.astro'
 
 const kvTitleEn = 'category'
 const kvTitleJa = 'キャリアコラム'
@@ -9,14 +10,17 @@ const kvProps = { kvTitleEn, kvTitleJa }
 ---
 
 <Layout title={`${kvTitleJa}のページ`}>
-  <main class="main">
-    <MainPosts kvProps={kvProps} />
+  <main class="container">
+    <div class="main">
+      <MainPosts kvProps={kvProps} />
+      <PopularPosts />
+    </div>
     <SideBar />
   </main>
 </Layout>
 
 <style lang="scss">
-  .main {
+  .container {
     display: grid;
     grid-template-columns: 1fr 28rem;
     gap: 7.5rem;

@@ -17,3 +17,17 @@
     font-size: 1.2rem;
     font-family: "Urbanist",sans-serif;
 }
+.c-text__default {
+    font-size: 1.6rem;
+    line-height: 1.8;
+}
+.c-text__sm {
+    font-size: 1.4rem;
+    line-height: 1.8;
+}
+.c-text__link {
+    background-image: linear-gradient(var(--color-text-black),var(--color-text-black));
+    background-repeat: no-repeat;
+    background-size: 100% 1px;
+    background-position: 0 100%;
+}

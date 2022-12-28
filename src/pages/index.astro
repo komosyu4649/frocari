@@ -3,17 +3,21 @@ import Layout from '../layouts/Layout.astro'
 import Card from '../components/Card.astro'
 import SideBar from '../components/SideBar.astro'
 import MainPosts from '../components/MainPosts.astro'
+import PopularPosts from '../components/PopularPosts.astro'
 ---
 
 <Layout title="Welcome to Astro.">
-  <main class="main">
-    <MainPosts />
+  <main class="container">
+    <div class="main">
+      <MainPosts />
+      <PopularPosts />
+    </div>
     <SideBar />
   </main>
 </Layout>
 
 <style lang="scss">
-  .main {
+  .container {
     display: grid;
     grid-template-columns: 1fr 28rem;
     gap: 7.5rem;

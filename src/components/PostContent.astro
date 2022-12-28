@@ -2,24 +2,23 @@
 import { Image } from '@astrojs/image/components'
 ---
 
-<article class="container">
+<section class="container">
+  <!-- header -->
   <div class="header">
     <!-- thumbnail -->
-    <div class="headerThumbnail">
-      <Image
-        src="/asset/img/home/post_01.jpg"
-        alt=""
-        width={180}
-        height={180}
-        class="headerThumbnailImg"
-      />
-    </div>
+    <Image
+      src="/asset/img/home/post_01.jpg"
+      alt=""
+      width={180}
+      height={180}
+      class="headerThumbnail"
+    />
     <!-- content -->
     <div class="headerContent">
       <!-- title -->
-      <h1 class="headerContentTitle">
+      <h2 class="headerContentTitle">
         自分の考えているキャリアプランを発表しますというお話でございますよ皆様ね
-      </h1>
+      </h2>
       <!-- info -->
       <div class="headerContentInfo">
         <!-- category -->
@@ -51,12 +50,266 @@ import { Image } from '@astrojs/image/components'
       </div>
     </div>
   </div>
-</article>
+  <!-- body -->
+  <div class="body">
+    <!-- intro -->
+    <div class="bodyIntro">
+      <p class="c-text__default">
+        僕は新卒で地方ホームセンターへ入社し、マイナビやリクルート、スポットライト（現：楽天ペイメント）など7社への転職し、営業部長や事業責任者などを務めてきた。
+        新卒での年収は240万だったが、転職を重ねて6社目で年収は1,000万円を超えた。これまでの転職で学んだことを書いた書籍『転職と副業のかけ算』は、おかげさまで著者累計10万部を超えるベストセラーとなった。
+      </p>
+    </div>
+    <!-- toc -->
+    <div class="bodyToc">
+      <p class="c-title__md bodyTocTitle">目次</p>
+      <div class="bodyTocMain">
+        <ul class="bodyTocMainList">
+          <li class="bodyTocMainItem">
+            <a href="/" class="c-text__link bodyTocMainItemLink"
+              >ここにタイトルが入ります</a
+            >
+            <ul class="bodyTocMainItemList">
+              <li class="bodyTocMainItemItem">
+                <a href="/" class="c-text__link bodyTocMainItemItemLink"
+                  >ここにタイトルが入ります</a
+                >
+              </li>
+              <li class="bodyTocMainItemItem">
+                <a href="/" class="c-text__link bodyTocMainItemItemLink"
+                  >ここにタイトルが入ります</a
+                >
+              </li>
+              <li class="bodyTocMainItemItem">
+                <a href="/" class="c-text__link bodyTocMainItemItemLink"
+                  >ここにタイトルが入ります</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li class="bodyTocMainItem">
+            <a href="/" class="c-text__link bodyTocMainItemLink"
+              >ここにタイトルが入ります</a
+            >
+            <ul class="bodyTocMainItemList">
+              <li class="bodyTocMainItemItem">
+                <a href="/" class="c-text__link bodyTocMainItemItemLink"
+                  >ここにタイトルが入ります</a
+                >
+              </li>
+              <li class="bodyTocMainItemItem">
+                <a href="/" class="c-text__link bodyTocMainItemItemLink"
+                  >ここにタイトルが入ります</a
+                >
+              </li>
+              <li class="bodyTocMainItemItem">
+                <a href="/" class="c-text__link bodyTocMainItemItemLink"
+                  >ここにタイトルが入ります</a
+                >
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- main -->
+    <article class="bodyMain">
+      <h2>ここにタイトルが入ります</h2>
+      <p>
+        ブロックチェーンにデータを書き込むたびにガス代と呼ばれる手数料が掛かります。これがWeb3.0に手を出しにくい大きな要因となっていると思います。
+        ブロックチェーンにデータを書き込むたびにガス代と呼ばれる手数料が掛かります。これがWeb3.0に手を出しにくい大きな要因となっていると思います。
+      </p>
+      <img src="/asset/img/home/post_01.jpg" alt="" />
+      <p>
+        ブロックチェーンにデータを書き込むたびにガス代と呼ばれる手数料が掛かります。これがWeb3.0に手を出しにくい大きな要因となっていると思います。
+        ブロックチェーンにデータを書き込むたびにガス代と呼ばれる手数料が掛かります。これがWeb3.0に手を出しにくい大きな要因となっていると思います。
+      </p>
+      <ul>
+        <li>ここにリストの形式が入ります</li>
+        <li>ここにリストの形式が入ります</li>
+        <li>ここにリストの形式が入ります</li>
+        <li>ここにリストの形式が入ります</li>
+        <li>ここにリストの形式が入ります</li>
+      </ul>
+      <ol>
+        <li>ここにリストの形式が入ります</li>
+        <li>ここにリストの形式が入ります</li>
+        <li>ここにリストの形式が入ります</li>
+        <li>ここにリストの形式が入ります</li>
+        <li>ここにリストの形式が入ります</li>
+      </ol>
+    </article>
+    <!-- profile -->
+    <div class="bodyProfile">
+      <!-- editor -->
+      <div class="bodyProfileEditor">
+        <Image
+          src="/asset/img/home/post_01.jpg"
+          alt=""
+          width={70}
+          height={70}
+          class="bodyProfileEditorThumbnail"
+        />
+        <div class="bodyProfileEditorContent">
+          <span class="bodyProfileEditorContentRole">編集者</span>
+          <a href="/about/" class="c-text__link bodyProfileEditorContentName"
+            >komosyu</a
+          >
+        </div>
+      </div>
+      <!-- description -->
+      <p class="c-text__sm bodyProfileDescription">
+        1995年生まれ。 <br />
+        Web制作会社で3年程度勤務。 <br />
+        制作会社のWebディベロッパーからフロントエンドエンジニアとして転職し、年収を上げた経験を元に「frocari」を運営。
+      </p>
+    </div>
+  </div>
+</section>
 
 <style lang="scss">
+  .container {
+    margin-top: 8rem;
+    padding: 6rem 5.5rem;
+    background-color: var(--color-gray);
+    border-radius: 2rem;
+    border: 1px solid var(--color-black);
+  }
+  .header {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 5rem;
+    padding-bottom: 5rem;
+    border-bottom: 1px solid var(--color-black);
+  }
+  .headerThumbnail {
+    width: 18rem;
+    height: 18rem;
+    border-radius: 4rem;
+  }
   .headerContentTitle {
+    margin-bottom: 2rem;
     font-size: 2.6rem;
     font-weight: bold;
     line-height: 1.5;
+  }
+  .headerContentInfo {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 2.5rem;
+  }
+  .headerContentInfoTagList {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+  }
+  .bodyIntro {
+    padding: 3rem;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-black);
+    border-radius: 1.5rem;
+  }
+  .bodyToc {
+    margin-top: 3rem;
+    padding: 3rem;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-black);
+    border-radius: 1.5rem;
+  }
+  .bodyTocMain {
+    margin: 1.5rem 1.5rem 0;
+  }
+  .bodyTocMainList {
+    display: grid;
+    grid-template-columns: auto;
+    gap: 1rem;
+  }
+  .bodyTocMainItem {
+    list-style-type: disc;
+  }
+  .bodyTocMainItemLink {
+    font-size: 1.4rem;
+  }
+  .bodyTocMainItemList {
+    display: grid;
+    grid-template-columns: auto;
+    gap: 0.5rem;
+    margin: 0.5rem 1rem 0;
+  }
+  .bodyTocMainItemItem {
+    list-style-type: disc;
+  }
+  .bodyTocMainItemItemLink {
+    font-size: 1.4rem;
+  }
+  .bodyMain {
+    margin-top: 7rem;
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin-bottom: 3rem;
+      font-weight: bold;
+    }
+    h2 {
+      font-size: 2.2rem;
+    }
+    p {
+      margin-top: 3rem;
+      font-size: 1.6rem;
+      line-height: 1.8;
+    }
+    img {
+      width: auto;
+      height: auto;
+      margin-top: 3rem;
+    }
+    ul {
+      margin: 3rem 1.5rem 0;
+      li {
+        list-style-type: disc;
+      }
+    }
+    ol {
+      margin: 3rem 1.5rem 0;
+      li {
+        list-style-type: decimal;
+      }
+    }
+    li {
+      font-size: 1.6rem;
+      line-height: 1.8;
+    }
+  }
+  .bodyProfile {
+    margin-top: 5rem;
+    padding: 3rem;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-black);
+    border-radius: 1.5rem;
+  }
+  .bodyProfileEditor {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .bodyProfileEditorContent {
+    display: inline-grid;
+    grid-template-columns: auto;
+    gap: 0.5rem;
+  }
+  .bodyProfileEditorContentRole {
+    font-size: 1.2rem;
+  }
+  .bodyProfileEditorContentName {
+    font-size: 1.8rem;
+    font-family: 'Urbanist', sans-serif;
+  }
+  .bodyProfileDescription {
+    margin-top: 1rem;
   }
 </style>
