@@ -1,0 +1,49 @@
+---
+import type { Breadcrumb } from '../../type'
+
+const { items } = Astro.props
+---
+
+<div class="container">
+  <ul class="list">
+    {
+      items.map((item: Breadcrumb) => (
+        <li class="item">
+          <a href={item.href} class="c-text__link itemLink">
+            {item.name}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</div>
+
+<style lang="scss">
+  .list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5rem 2rem;
+  }
+  .item {
+    position: relative;
+    &::before {
+      position: absolute;
+      top: 0.3rem;
+      right: -1rem;
+      content: '';
+      width: 1px;
+      height: calc(100% - 0.6rem);
+      background-color: var(--color-black);
+      transform: rotate(25deg);
+    }
+    &:last-child {
+      &::before {
+        content: none;
+      }
+    }
+  }
+  .itemLink {
+    font-size: 1.2rem;
+  }
+</style>

@@ -7,6 +7,17 @@ import Layout from '../../layouts/Layout.astro'
 const kvTitleEn = 'about'
 const kvTitleJa = 'frocariについて'
 const kvProps = { kvTitleEn, kvTitleJa }
+
+const items = [
+  {
+    name: 'ホーム',
+    href: '/',
+  },
+  {
+    name: 'frocariについて',
+    href: '/about/',
+  },
+]
 ---
 
 <Layout title="about">
@@ -14,7 +25,7 @@ const kvProps = { kvTitleEn, kvTitleJa }
     <div class="main">
       <AboutMain kvProps={kvProps} />
     </div>
-    <SideBar />
+    <SideBar items={items} />
   </main>
 </Layout>
 

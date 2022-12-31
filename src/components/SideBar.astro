@@ -1,10 +1,14 @@
 ---
+import Breadcrumb from './Breadcrumb.astro'
 import SideBarKeywords from './SideBarKeywords.astro'
 import SideBarSearch from './SideBarSearch.astro'
 import SidebarBanner from './SidebarBanner.astro'
+
+const { items } = Astro.props
 ---
 
 <section class="container">
+  {items && <Breadcrumb items={items} />}
   <SideBarSearch />
   <SideBarKeywords />
   <SidebarBanner />

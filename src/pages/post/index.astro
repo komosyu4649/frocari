@@ -4,6 +4,17 @@ import Layout from '../../layouts/Layout.astro'
 import SideBar from '../../components/SideBar.astro'
 import PostContent from '../../components/PostContent.astro'
 import RelationPosts from '../../components/RelationPosts.astro'
+
+const items = [
+  {
+    name: 'ホーム',
+    href: '/',
+  },
+  {
+    name: '自分の考えているキャリアプランを発表しますというお話でございますよ皆様ね',
+    href: '/post/',
+  },
+]
 ---
 
 <Layout title={}>
@@ -12,7 +23,7 @@ import RelationPosts from '../../components/RelationPosts.astro'
       <PostContent />
       <RelationPosts />
     </div>
-    <SideBar />
+    <SideBar items={items} />
   </main>
 </Layout>
 

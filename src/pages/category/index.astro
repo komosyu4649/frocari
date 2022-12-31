@@ -7,6 +7,17 @@ import PopularPosts from '../../components/PopularPosts.astro'
 const kvTitleEn = 'category'
 const kvTitleJa = 'キャリアコラム'
 const kvProps = { kvTitleEn, kvTitleJa }
+
+const items = [
+  {
+    name: 'ホーム',
+    href: '/',
+  },
+  {
+    name: 'キャリアコラム',
+    href: '/category/',
+  },
+]
 ---
 
 <Layout title={`${kvTitleJa}のページ`}>
@@ -15,7 +26,7 @@ const kvProps = { kvTitleEn, kvTitleJa }
       <MainPosts kvProps={kvProps} />
       <PopularPosts />
     </div>
-    <SideBar />
+    <SideBar items={items} />
   </main>
 </Layout>
 
