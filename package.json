@@ -13,9 +13,11 @@
   "dependencies": {
     "@astrojs/image": "^0.12.1",
     "astro": "^1.7.2",
+    "newt-client-js": "^3.2.2",
     "sharp": "^0.31.3"
   },
   "devDependencies": {
+    "@types/node": "^18.11.18",
     "prettier": "^2.8.1",
     "prettier-plugin-astro": "^0.7.0",
     "sass": "^1.57.1"

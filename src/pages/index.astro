@@ -5,6 +5,9 @@ import SideBar from '../components/SideBar.astro'
 import MainPosts from '../components/MainPosts.astro'
 import PopularPosts from '../components/PopularPosts.astro'
 
+import { client } from '../lib/newt/client'
+console.log(client)
+
 const kvTitleEn = 'all'
 const kvTitleJa = 'すべての記事'
 const kvProps = { kvTitleEn, kvTitleJa }
