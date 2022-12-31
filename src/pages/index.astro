@@ -4,12 +4,16 @@ import Card from '../components/Card.astro'
 import SideBar from '../components/SideBar.astro'
 import MainPosts from '../components/MainPosts.astro'
 import PopularPosts from '../components/PopularPosts.astro'
+
+const kvTitleEn = 'all'
+const kvTitleJa = 'すべての記事'
+const kvProps = { kvTitleEn, kvTitleJa }
 ---
 
 <Layout title="Welcome to Astro.">
   <main class="container">
     <div class="main">
-      <MainPosts />
+      <MainPosts kvProps={kvProps} />
       <PopularPosts />
     </div>
     <SideBar />
