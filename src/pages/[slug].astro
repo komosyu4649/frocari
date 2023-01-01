@@ -22,6 +22,9 @@ export async function getStaticPaths() {
   const postsData = await client.getContents({
     appUid: import.meta.env.PUBLIC_NEWT_APP_UID,
     modelUid: import.meta.env.PUBLIC_NEWT_MODEL_POST,
+    query: {
+      depth: 2,
+    },
   })
   const postsContents = postsData.items
   // console.log(postsContents)
@@ -40,13 +43,14 @@ export async function getStaticPaths() {
 }
 
 const { postsContent } = Astro.props
+const relationContents = postsContent.relation
 ---
 
 <Layout title={}>
   <main class="container">
     <div class="main">
       <PostContent postsContent={postsContent} />
-      <RelationPosts />
+      <RelationPosts relationContents={relationContents} />
     </div>
     <SideBar items={items} />
   </main>

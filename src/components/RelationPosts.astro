@@ -18,6 +18,8 @@ const posts = [
     title: '自分の考えているキャリアプランを発表します',
   },
 ]
+
+const { relationContents } = Astro.props
 ---
 
 <div class="container">
@@ -25,18 +27,18 @@ const posts = [
   <div class="main">
     <ul class="mainList">
       {
-        posts.map((post) => (
+        relationContents.map((relationContent) => (
           <li class="mainItem">
-            <a href="" class="mainItemLink">
+            <a href={relationContent.slug} class="mainItemLink">
               <Image
-                src={post.imgSrc}
-                alt={post.imgAlt}
-                width={90}
-                height={90}
+                src={relationContent.thumbnail.src}
+                alt={relationContent.thumbnail.altText}
+                width={relationContent.thumbnail.width}
+                height={relationContent.thumbnail.height}
                 class="mainItemLinkImg"
               />
               <div class="mainItemLinkContent">
-                <p class="mainItemLinkContentTitle">{post.title}</p>
+                <p class="mainItemLinkContentTitle">{relationContent.title}</p>
               </div>
             </a>
           </li>
