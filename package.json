@@ -13,6 +13,7 @@
   "dependencies": {
     "@astrojs/image": "^0.12.1",
     "astro": "^1.7.2",
+    "dayjs": "^1.11.7",
     "newt-client-js": "^3.2.2",
     "sharp": "^0.31.3"
   },

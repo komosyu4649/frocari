@@ -1,16 +1,41 @@
 export type Post = {
-  href: string
-  imgSrc: string
-  imgAlt: string
-  categoryName: string
-  categoryHref: string
-  timeName: string
-  timeDate: string
+  _id: string
+  _sys: {
+    raw: [Object]
+    customOrder: number
+    createdAt: string
+    updatedAt: string
+  }
   title: string
-  tags: {
-    href: string
+  slug: string
+  thumbnail: {
+    _id: string
+    altText: string
+    description: string
+    fileName: string
+    fileSize: number
+    fileType: string
+    height: number
+    metadata: {}
+    src: string
+    title: string
+    width: number
+  }
+  date: string
+  introduction: string
+  content: string
+  category: {
+    _id: string
+    _sys: [Object]
     name: string
-  }[]
+    slug: string
+  }
+  tag: [
+    {
+      name: string
+      slug: string
+    }
+  ]
 }
 
 export type Breadcrumb = {

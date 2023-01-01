@@ -1,37 +1,42 @@
 ---
+import dayjs from 'dayjs'
 import { Image } from '@astrojs/image/components'
 import type { Post } from '../../type'
-const { posts } = Astro.props
+const { postsData } = Astro.props
+const postsContents = postsData.items
 ---
 
 {
-  posts.map((post: Post) => (
+  postsContents.map((postsContent: Post) => (
     <li class="item">
-      <a href={post.href} class="itemLink">
+      <a href={postsContent.slug} class="itemLink">
         <img
-          src={post.imgSrc}
-          alt={post.imgAlt}
-          width="120"
-          height="120"
+          src={postsContent.thumbnail.src}
+          alt={postsContent.thumbnail.altText}
+          width={postsContent.thumbnail.width}
+          height={postsContent.thumbnail.height}
           class="itemLinkImg"
         />
       </a>
       <div class="itemLinkContent">
         <div class="itemLinkContentInfo">
-          <a href={post.categoryHref} class="itemLinkContentInfoCategory">
-            {post.categoryName}
+          <a
+            href={postsContent.category.slug}
+            class="itemLinkContentInfoCategory"
+          >
+            {postsContent.category.name}
           </a>
-          <time class="itemLinkContentInfoTime" datetime={post.timeDate}>
-            {post.timeName}
+          <time class="itemLinkContentInfoTime" datetime={postsContent.date}>
+            {dayjs(postsContent.date).format('YYYY.MM.DD')}
           </time>
         </div>
-        <p class="itemLinkContentTitle">{post.title}</p>
+        <p class="itemLinkContentTitle">{postsContent.title}</p>
         <div class="itemLinkContentTag">
           <ul class="itemLinkContentTagList">
-            {post.tags.map((tag) => (
+            {postsContent.tag.map((item) => (
               <li class="itemLinkContentTagItem">
-                <a href={tag.href} class="itemLinkContentTagItemLink">
-                  {tag.name}
+                <a href={item.slug} class="itemLinkContentTagItemLink">
+                  {item.name}
                 </a>
               </li>
             ))}

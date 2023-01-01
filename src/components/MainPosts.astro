@@ -248,13 +248,13 @@ const posts: Post[] = [
   },
 ]
 
-const { kvProps } = Astro.props
+const { kvProps, postsData } = Astro.props
 ---
 
 <div class="container">
   {kvProps && <Kv kvProps={kvProps} />}
   <ul class="list">
-    <MainPost posts={posts} />
+    <MainPost postsData={postsData} />
   </ul>
   <Pagination />
   <!-- <PopularPosts /> -->

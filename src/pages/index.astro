@@ -6,7 +6,10 @@ import MainPosts from '../components/MainPosts.astro'
 import PopularPosts from '../components/PopularPosts.astro'
 
 import { client } from '../lib/newt/client'
-console.log(client)
+const postsData = await client.getContents({
+  appUid: import.meta.env.PUBLIC_NEWT_APP_UID,
+  modelUid: import.meta.env.PUBLIC_NEWT_MODEL_POST,
+})
 
 const kvTitleEn = 'all'
 const kvTitleJa = 'すべての記事'
@@ -16,7 +19,7 @@ const kvProps = { kvTitleEn, kvTitleJa }
 <Layout title="Welcome to Astro.">
   <main class="container">
     <div class="main">
-      <MainPosts kvProps={kvProps} />
+      <MainPosts kvProps={kvProps} postsData={postsData} />
       <PopularPosts />
     </div>
     <SideBar />
