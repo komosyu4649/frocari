@@ -1,0 +1,48 @@
+---
+const { props } = Astro.props
+---
+
+<article class="postContentMain" set:html={props} />
+
+<style lang="scss" is:global>
+  .postContentMain {
+    margin-top: 7rem;
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin-bottom: 3rem;
+      font-weight: bold;
+    }
+    h2 {
+      font-size: 2.2rem;
+    }
+    p {
+      margin-top: 3rem;
+      font-size: 1.6rem;
+      line-height: 1.8;
+    }
+    img {
+      width: auto;
+      height: auto;
+      margin-top: 3rem;
+    }
+    ul {
+      margin: 3rem 1.5rem 0;
+      li {
+        list-style-type: disc;
+      }
+    }
+    ol {
+      margin: 3rem 1.5rem 0;
+      li {
+        list-style-type: decimal;
+      }
+    }
+    li {
+      font-size: 1.6rem;
+      line-height: 1.8;
+    }
+  }
+</style>

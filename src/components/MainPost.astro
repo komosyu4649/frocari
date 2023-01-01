@@ -21,7 +21,7 @@ const postsContents = postsData.items
       <div class="itemLinkContent">
         <div class="itemLinkContentInfo">
           <a
-            href={postsContent.category.slug}
+            href={`/category/${postsContent.category.slug}/`}
             class="itemLinkContentInfoCategory"
           >
             {postsContent.category.name}
@@ -35,7 +35,10 @@ const postsContents = postsData.items
           <ul class="itemLinkContentTagList">
             {postsContent.tag.map((item) => (
               <li class="itemLinkContentTagItem">
-                <a href={item.slug} class="itemLinkContentTagItemLink">
+                <a
+                  href={`/tag/${item.slug}/`}
+                  class="itemLinkContentTagItemLink"
+                >
                   {item.name}
                 </a>
               </li>

@@ -1,0 +1,58 @@
+---
+import { client } from '../lib/newt/client'
+
+import Layout from '../layouts/Layout.astro'
+import SideBar from '../components/SideBar.astro'
+import PostContent from '../components/PostContent.astro'
+import RelationPosts from '../components/RelationPosts.astro'
+
+const items = [
+  {
+    name: 'ホーム',
+    href: '/',
+  },
+  {
+    name: '自分の考えているキャリアプランを発表しますというお話でございますよ皆様ね',
+    href: '/post/',
+  },
+]
+
+export async function getStaticPaths() {
+  const postsData = await client.getContents({
+    appUid: import.meta.env.PUBLIC_NEWT_APP_UID,
+    modelUid: import.meta.env.PUBLIC_NEWT_MODEL_POST,
+  })
+  const postsContents = postsData.items
+  const pages = postsContents.map((postsContent) => ({
+    params: {
+      slug: postsContent.slug,
+    },
+    props: {
+      postsContent,
+    },
+  }))
+  return pages
+}
+
+const { postsContent } = Astro.props
+---
+
+<Layout title={}>
+  <main class="container">
+    <div class="main">
+      <PostContent postsContent={postsContent} />
+      <RelationPosts />
+    </div>
+    <SideBar items={items} />
+  </main>
+</Layout>
+
+<style lang="scss">
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 28rem;
+    gap: 7.5rem;
+    width: 126.5rem;
+    margin: 0 auto;
+  }
+</style>

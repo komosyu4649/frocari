@@ -1,5 +1,10 @@
 ---
+import dayjs from 'dayjs'
 import { Image } from '@astrojs/image/components'
+import PostContentMain from '../components/PostContentMain.astro'
+
+const { postsContent } = Astro.props
+// console.log(postsContent)
 ---
 
 <section class="container">
@@ -7,46 +12,50 @@ import { Image } from '@astrojs/image/components'
   <div class="header">
     <!-- thumbnail -->
     <Image
-      src="/asset/img/home/post_01.jpg"
-      alt=""
-      width={180}
-      height={180}
+      src={postsContent.thumbnail.src}
+      alt={postsContent.thumbnail.altText}
+      width={postsContent.thumbnail.width}
+      height={postsContent.thumbnail.height}
       class="headerThumbnail"
     />
     <!-- content -->
     <div class="headerContent">
       <!-- title -->
       <h1 class="headerContentTitle">
-        自分の考えているキャリアプランを発表しますというお話でございますよ皆様ね
+        {postsContent.title}
       </h1>
       <!-- info -->
       <div class="headerContentInfo">
         <!-- category -->
-        <a href="" class="c-text__label headerContentInfoCategory">コラム</a>
+        <a
+          href={`/category/${postsContent.category.slug}/`}
+          class="c-text__label headerContentInfoCategory"
+          >{postsContent.category.name}</a
+        >
         <!-- tag -->
         <div class="headerContentInfoTag">
           <ul class="headerContentInfoTagList">
-            <li class="headerContentInfoTagItem">
-              <a href="" class="c-text__tag headerContentInfoTagItemLink"
-                >#キャリア</a
-              >
-            </li>
-            <li class="headerContentInfoTagItem">
-              <a href="" class="c-text__tag headerContentInfoTagItemLink"
-                >#年収</a
-              >
-            </li>
-            <li class="headerContentInfoTagItem">
-              <a href="" class="c-text__tag headerContentInfoTagItemLink"
-                >#転職</a
-              >
-            </li>
+            {
+              postsContent.tag.map((item) => (
+                <li class="headerContentInfoTagItem">
+                  <a
+                    href={`/tag/${item.slug}/`}
+                    class="c-text__tag headerContentInfoTagItemLink"
+                  >
+                    {item.name}
+                  </a>
+                </li>
+              ))
+            }
           </ul>
         </div>
         <!-- date -->
-        <time datetime="2023-01-01" class="c-text__time headerContentInfoDate"
-          >2023.01.01</time
+        <time
+          datetime={postsContent.date}
+          class="c-text__time headerContentInfoDate"
         >
+          {dayjs(postsContent.date).format('YYYY.MM.DD')}
+        </time>
       </div>
     </div>
   </div>
@@ -55,12 +64,11 @@ import { Image } from '@astrojs/image/components'
     <!-- intro -->
     <div class="bodyIntro">
       <p class="c-text__default">
-        僕は新卒で地方ホームセンターへ入社し、マイナビやリクルート、スポットライト（現：楽天ペイメント）など7社への転職し、営業部長や事業責任者などを務めてきた。
-        新卒での年収は240万だったが、転職を重ねて6社目で年収は1,000万円を超えた。これまでの転職で学んだことを書いた書籍『転職と副業のかけ算』は、おかげさまで著者累計10万部を超えるベストセラーとなった。
+        {postsContent.introduction}
       </p>
     </div>
     <!-- toc -->
-    <div class="bodyToc">
+    <!-- <div class="bodyToc">
       <p class="c-title__md bodyTocTitle">目次</p>
       <div class="bodyTocMain">
         <ul class="bodyTocMainList">
@@ -110,34 +118,10 @@ import { Image } from '@astrojs/image/components'
           </li>
         </ul>
       </div>
-    </div>
+    </div> -->
     <!-- main -->
-    <article class="bodyMain">
-      <h2>ここにタイトルが入ります</h2>
-      <p>
-        ブロックチェーンにデータを書き込むたびにガス代と呼ばれる手数料が掛かります。これがWeb3.0に手を出しにくい大きな要因となっていると思います。
-        ブロックチェーンにデータを書き込むたびにガス代と呼ばれる手数料が掛かります。これがWeb3.0に手を出しにくい大きな要因となっていると思います。
-      </p>
-      <img src="/asset/img/home/post_01.jpg" alt="" />
-      <p>
-        ブロックチェーンにデータを書き込むたびにガス代と呼ばれる手数料が掛かります。これがWeb3.0に手を出しにくい大きな要因となっていると思います。
-        ブロックチェーンにデータを書き込むたびにガス代と呼ばれる手数料が掛かります。これがWeb3.0に手を出しにくい大きな要因となっていると思います。
-      </p>
-      <ul>
-        <li>ここにリストの形式が入ります</li>
-        <li>ここにリストの形式が入ります</li>
-        <li>ここにリストの形式が入ります</li>
-        <li>ここにリストの形式が入ります</li>
-        <li>ここにリストの形式が入ります</li>
-      </ul>
-      <ol>
-        <li>ここにリストの形式が入ります</li>
-        <li>ここにリストの形式が入ります</li>
-        <li>ここにリストの形式が入ります</li>
-        <li>ここにリストの形式が入ります</li>
-        <li>ここにリストの形式が入ります</li>
-      </ol>
-    </article>
+    <PostContentMain props={postsContent.content} />
+    <!-- <article class="bodyMain" set:html={postsContent.content} /> -->
     <!-- profile -->
     <div class="bodyProfile">
       <!-- editor -->
