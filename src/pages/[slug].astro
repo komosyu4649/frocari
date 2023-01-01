@@ -5,6 +5,7 @@ import Layout from '../layouts/Layout.astro'
 import SideBar from '../components/SideBar.astro'
 import PostContent from '../components/PostContent.astro'
 import RelationPosts from '../components/RelationPosts.astro'
+import type { Post } from '../../type'
 
 const items = [
   {
@@ -23,14 +24,18 @@ export async function getStaticPaths() {
     modelUid: import.meta.env.PUBLIC_NEWT_MODEL_POST,
   })
   const postsContents = postsData.items
-  const pages = postsContents.map((postsContent) => ({
-    params: {
-      slug: postsContent.slug,
-    },
-    props: {
-      postsContent,
-    },
-  }))
+  // console.log(postsContents)
+  const pages = postsContents.map((postsContent) => {
+    // console.log(postsContent)
+    return {
+      params: {
+        slug: postsContent.slug,
+      },
+      props: {
+        postsContent,
+      },
+    }
+  })
   return pages
 }
 

@@ -38,6 +38,23 @@ export type Post = {
   ]
 }
 
+export type Category = {
+  _id: string
+  _sys: {
+    raw: {
+      createdAt: string
+      updatedAt: string
+      firstPublishedAt: string
+      publishedAt: string
+    }
+    customOrder: number
+    createdAt: string
+    updatedAt: string
+  }
+  name: string
+  slug: string
+}
+
 export type Breadcrumb = {
   name: string
   href: string

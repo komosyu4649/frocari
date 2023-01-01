@@ -10,7 +10,7 @@ const postsContents = postsData.items
   postsContents.map((postsContent: Post) => (
     <li class="item">
       <a href={postsContent.slug} class="itemLink">
-        <img
+        <Image
           src={postsContent.thumbnail.src}
           alt={postsContent.thumbnail.altText}
           width={postsContent.thumbnail.width}

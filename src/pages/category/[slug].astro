@@ -1,4 +1,5 @@
 ---
+import type { Category } from '../../../type'
 import { client } from '../../lib/newt/client'
 
 export async function getStaticPaths() {
@@ -6,22 +7,15 @@ export async function getStaticPaths() {
     appUid: import.meta.env.PUBLIC_NEWT_APP_UID,
     modelUid: import.meta.env.PUBLIC_NEWT_MODEL_CATEGORY,
   })
-  console.log(categoryData)
   const categoryContents = categoryData.items
-  //   categoryContents.map((categoryContent) => ({
+  //   console.log(categoryContents[0])
   return [
     categoryContents.map((categoryContent) => ({
       params: {
         slug: categoryContent.slug,
       },
     })),
-    // {
-    //   params: {
-    //     slug:
-    //   },
-    // },
   ]
-  //   }))
 }
 ---
 
