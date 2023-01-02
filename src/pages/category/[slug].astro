@@ -18,6 +18,7 @@ export async function getStaticPaths() {
   const categoryContents = categoryData.items
   // console.log(categoryContents)
   return [
+    // paginate(postsContents, { pageSize: 2 }),
     categoryContents.map((categoryContent) => ({
       params: {
         slug: categoryContent.slug,
@@ -29,8 +30,10 @@ export async function getStaticPaths() {
   ]
 }
 
-const { name } = Astro.props
+const { name, page } = Astro.props
 const { slug } = Astro.params
+
+console.log(page)
 
 const postsData = await client.getContents({
   appUid: import.meta.env.PUBLIC_NEWT_APP_UID,
