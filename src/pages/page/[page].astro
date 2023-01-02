@@ -12,21 +12,8 @@ export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
   return paginate(postsContents, { pageSize: 2 })
 }
 
-const postsData = await client.getContents({
-  appUid: import.meta.env.PUBLIC_NEWT_APP_UID,
-  modelUid: import.meta.env.PUBLIC_NEWT_MODEL_POST,
-})
-const postsContents = postsData.items
-const totalPostNumber = postsContents.length
-const displayPostNumber = 2
-const pageNationProps = { totalPostNumber, displayPostNumber }
-
-// const { totalPostNumber, displayPostNumber } = Astro.props
-// console.log(totalPostNumber, displayPostNumber)
+const { page } = Astro.props
 ---
 
 <div class="">page</div>
-<Pagination
-  totalPostNumber={totalPostNumber}
-  displayPostNumber={displayPostNumber}
-/>
+<Pagination page={page} />
