@@ -1,42 +1,11 @@
 ---
-const keywords = [
-  {
-    href: '/career/',
-    name: '#キャリア',
-  },
-  {
-    href: '/nensyu/',
-    name: '#年収',
-  },
-  {
-    href: '/tensyoku/',
-    name: '#転職',
-  },
-  {
-    href: '/career/',
-    name: '#キャリア',
-  },
-  {
-    href: '/career/',
-    name: '#キャリア',
-  },
-  {
-    href: '/career/',
-    name: '#キャリア',
-  },
-  {
-    href: '/tensyoku/',
-    name: '#転職',
-  },
-  {
-    href: '/tensyoku/',
-    name: '#転職',
-  },
-  {
-    href: '/tensyoku/',
-    name: '#転職',
-  },
-]
+import { client } from '../lib/newt/client'
+
+const tagData = await client.getContents({
+  appUid: import.meta.env.PUBLIC_NEWT_APP_UID,
+  modelUid: import.meta.env.PUBLIC_NEWT_MODEL_TAG,
+})
+const tagItems = tagData.items
 ---
 
 <div class="container">
@@ -44,10 +13,10 @@ const keywords = [
   <div class="main">
     <ul class="mainList">
       {
-        keywords.map((keyword) => (
+        tagItems.map((tagItem) => (
           <li class="mainItem">
-            <a href={keyword.href} class="mainItemLink">
-              {keyword.name}
+            <a href={tagItem.slug} class="mainItemLink">
+              {tagItem.name}
             </a>
           </li>
         ))
