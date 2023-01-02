@@ -15,7 +15,7 @@ const tagItems = tagData.items
       {
         tagItems.map((tagItem) => (
           <li class="mainItem">
-            <a href={tagItem.slug} class="mainItemLink">
+            <a href={`/tag/${tagItem.slug}/`} class="mainItemLink">
               {tagItem.name}
             </a>
           </li>
