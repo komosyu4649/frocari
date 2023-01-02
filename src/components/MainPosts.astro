@@ -1,4 +1,5 @@
 ---
+import type { GetStaticPathsOptions } from 'astro'
 import type { Post } from '../../type'
 import Kv from './Kv.astro'
 import MainPost from './MainPost.astro'
@@ -6,6 +7,8 @@ import Pagination from './Pagination.astro'
 import PopularPosts from './PopularPosts.astro'
 
 const { kvProps, postsContents } = Astro.props
+const totalPostNumber = postsContents.length
+const displayPostNumber = 2
 ---
 
 <div class="container">
@@ -13,7 +16,10 @@ const { kvProps, postsContents } = Astro.props
   <ul class="list">
     <MainPost postsContents={postsContents} />
   </ul>
-  <Pagination />
+  <Pagination
+    totalPostNumber={totalPostNumber}
+    displayPostNumber={displayPostNumber}
+  />
   <!-- <PopularPosts /> -->
 </div>
 
