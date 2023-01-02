@@ -2,14 +2,13 @@
 import dayjs from 'dayjs'
 import { Image } from '@astrojs/image/components'
 import type { Post } from '../../type'
-const { postsData } = Astro.props
-const postsContents = postsData.items
+const { postsContents } = Astro.props
 ---
 
 {
   postsContents.map((postsContent: Post) => (
     <li class="item">
-      <a href={postsContent.slug} class="itemLink">
+      <a href={`/${postsContent.slug}/`} class="itemLink">
         <Image
           src={postsContent.thumbnail.src}
           alt={postsContent.thumbnail.altText}

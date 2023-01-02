@@ -10,6 +10,7 @@ const postsData = await client.getContents({
   appUid: import.meta.env.PUBLIC_NEWT_APP_UID,
   modelUid: import.meta.env.PUBLIC_NEWT_MODEL_POST,
 })
+const postsContents = postsData.items
 
 const kvTitleEn = 'all'
 const kvTitleJa = 'すべての記事'
@@ -19,7 +20,7 @@ const kvProps = { kvTitleEn, kvTitleJa }
 <Layout title="Welcome to Astro.">
   <main class="container">
     <div class="main">
-      <MainPosts kvProps={kvProps} postsData={postsData} />
+      <MainPosts kvProps={kvProps} postsContents={postsContents} />
       <PopularPosts />
     </div>
     <SideBar />

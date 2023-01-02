@@ -1,37 +1,11 @@
 ---
-// import { Image } from '@astrojs/image/components';
+import { client } from '../lib/newt/client'
 
-const menus = [
-  {
-    name: 'キャリアコラム',
-    // href: '/column/',
-    href: '/category/',
-  },
-  {
-    name: '転職サイト',
-    // href: '/site/',
-    href: '/category/',
-  },
-  {
-    name: '転職エージェント',
-    // href: '/agent/',
-    href: '/category/',
-  },
-  {
-    name: '作業ツール',
-    // href: '/tool/',
-    href: '/category/',
-  },
-  {
-    name: '書評',
-    // href: '/book/',
-    href: '/category/',
-  },
-  {
-    name: 'frocariについて',
-    href: '/about/',
-  },
-]
+const categoryData = await client.getContents({
+  appUid: import.meta.env.PUBLIC_NEWT_APP_UID,
+  modelUid: import.meta.env.PUBLIC_NEWT_MODEL_CATEGORY,
+})
+const categoryItems = categoryData.items
 ---
 
 <header class="container">
@@ -53,14 +27,17 @@ const menus = [
     <nav class="menu">
       <ul class="menuList">
         {
-          menus.map((menu) => (
+          categoryItems.map((categoryItem) => (
             <li class="menuItem">
-              <a href={menu.href} class="menuItemLink">
-                {menu.name}
+              <a href={`/category/${categoryItem.slug}/`} class="menuItemLink">
+                {categoryItem.name}
               </a>
             </li>
           ))
         }
+        <li class="menuItem">
+          <a href="/about/" class="menuItemLink"> frocariについて</a>
+        </li>
       </ul>
     </nav>
   </div>

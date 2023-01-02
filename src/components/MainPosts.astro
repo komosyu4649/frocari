@@ -5,13 +5,13 @@ import MainPost from './MainPost.astro'
 import Pagination from './Pagination.astro'
 import PopularPosts from './PopularPosts.astro'
 
-const { kvProps, postsData } = Astro.props
+const { kvProps, postsContents } = Astro.props
 ---
 
 <div class="container">
   {kvProps && <Kv kvProps={kvProps} />}
   <ul class="list">
-    <MainPost postsData={postsData} />
+    <MainPost postsContents={postsContents} />
   </ul>
   <Pagination />
   <!-- <PopularPosts /> -->
