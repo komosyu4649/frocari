@@ -33,7 +33,7 @@ export async function getStaticPaths() {
 const { name, page } = Astro.props
 const { slug } = Astro.params
 
-console.log(page)
+// console.log(page)
 
 const postsData = await client.getContents({
   appUid: import.meta.env.PUBLIC_NEWT_APP_UID,
@@ -52,7 +52,7 @@ const kvProps = { kvTitleEn, kvTitleJa }
 <Layout title="category">
   <main class="container">
     <div class="main">
-      <MainPosts kvProps={kvProps} postsContents={postsContents} />
+      <!-- <MainPosts kvProps={kvProps} postsContents={postsContents} /> -->
       <PopularPosts />
     </div>
     <SideBar />

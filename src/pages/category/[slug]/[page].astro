@@ -1,0 +1,70 @@
+---
+import type { GetStaticPathsOptions } from 'astro'
+import { client } from '../../../lib/newt/client'
+import Layout from '../../../layouts/Layout.astro'
+import PopularPosts from '../../../components/PopularPosts.astro'
+import SideBar from '../../../components/SideBar.astro'
+import MainPosts from '../../../components/MainPosts.astro'
+
+export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
+  const categoryData = await client.getContents({
+    appUid: import.meta.env.PUBLIC_NEWT_APP_UID,
+    modelUid: import.meta.env.PUBLIC_NEWT_MODEL_CATEGORY,
+  })
+  const postsData = await client.getContents({
+    appUid: import.meta.env.PUBLIC_NEWT_APP_UID,
+    modelUid: import.meta.env.PUBLIC_NEWT_MODEL_POST,
+  })
+  const categoryContents = categoryData.items
+  return categoryContents.map((categoryContent) => {
+    const postsContents = postsData.items.filter(
+      (item) => item.category.slug === categoryContent.slug
+    )
+    return paginate(postsContents, {
+      params: { slug: categoryContent.slug, name: categoryContent.name },
+      pageSize: 2,
+    })
+  })
+}
+
+const { page } = Astro.props
+const { slug, name } = Astro.params
+
+console.log(111, page, slug, name)
+
+// const postsData = await client.getContents({
+//   appUid: import.meta.env.PUBLIC_NEWT_APP_UID,
+//   modelUid: import.meta.env.PUBLIC_NEWT_MODEL_POST,
+// })
+
+// const postsContents = postsData.items.filter(
+//   (item) => item.category.slug === slug
+// )
+
+// console.log(page, name, slug)
+
+// const kvTitleEn = 'category'
+// const kvTitleJa = name
+// const kvProps = { kvTitleEn, kvTitleJa }
+---
+
+<Layout title="category">
+  <main class="container">
+    <div class="main">
+      <!-- <MainPosts kvProps={kvProps} page={page} postsContents={postsContents} /> -->
+      <PopularPosts />
+    </div>
+    <SideBar />
+  </main>
+</Layout>
+
+<style lang="scss">
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 28rem;
+    gap: 7.5rem;
+    width: 126.5rem;
+    // margin: 8rem auto 0;
+    margin: 0 auto;
+  }
+</style>

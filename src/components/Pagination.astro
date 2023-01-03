@@ -1,6 +1,6 @@
 ---
 const { page } = Astro.props
-// console.log(page)
+console.log(page)
 
 const url = new URL(Astro.request.url)
 
@@ -44,7 +44,6 @@ const paginationGenerator = (
     rangeWidthDots.push(range)
     length = range
   })
-  // console.log(currentPageNumber, totalPageNumber)
   return rangeWidthDots
 }
 ---
@@ -52,26 +51,27 @@ const paginationGenerator = (
 <div class="container">
   <ul class="list">
     {
-      paginationGenerator(currentPageNumber, totalPageNumber).map((page) => (
-        // page === 1 ? (
-        //   <li class="item">
-        //     <a href="/" class="itemLink">
-        //       {page}
-        //     </a>
-        //   </li>
-        // ) : (
-        //   <li class="item">
-        //     <a href={`/${page}/`} class="itemLink">
-        //       {page}
-        //     </a>
-        //   </li>
-        // )
-        <li class="item">
-          <a href={`/${page}/`} class="itemLink">
-            {page}
-          </a>
-        </li>
-      ))
+      paginationGenerator(currentPageNumber, totalPageNumber).map(
+        (page) =>
+          page === 1 ? (
+            <li class="item">
+              <a href="/" class="itemLink">
+                {page}
+              </a>
+            </li>
+          ) : (
+            <li class="item">
+              <a href={`/${page}/`} class="itemLink">
+                {page}
+              </a>
+            </li>
+          )
+        // <li class="item">
+        //   <a href={`/${page}/`} class="itemLink">
+        //     {page}
+        //   </a>
+        // </li>
+      )
     }
   </ul>
 </div>
