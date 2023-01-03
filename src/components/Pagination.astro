@@ -1,61 +1,73 @@
 ---
-// const { page } = Astro.props
+const { page } = Astro.props
 // console.log(page)
 
-// const url = new URL(Astro.request.url)
+const url = new URL(Astro.request.url)
 
-// const totalPageNumber = Math.ceil(page.total / page.size)
+const totalPageNumber = Math.ceil(page.total / page.size)
 
-// let currentPageNumber
-// if (!url.pathname.includes('page')) {
-//   currentPageNumber = 1
-// } else {
-//   currentPageNumber = page.currentPage
-// }
+let currentPageNumber
+if (!url.pathname.includes('page')) {
+  currentPageNumber = 1
+} else {
+  currentPageNumber = page.currentPage
+}
 
-// const paginationGenerator = (
-//   currentPageNumber: number,
-//   totalPageNumber: number,
-//   width: number = 1
-// ) => {
-//   const prev = currentPageNumber - width
-//   const next = currentPageNumber + width + 1
-//   const ranges = []
-//   const rangeWidthDots: [...number[], string?] = []
-//   let length: number
-//   for (let i = 1; i <= totalPageNumber; i += 1) {
-//     if (i === 1 || i === totalPageNumber || (i >= prev && i <= next)) {
-//       ranges.push(i)
-//     } else if (i < prev) {
-//       i = prev - 1
-//     } else if (i > next) {
-//       ranges.push(totalPageNumber)
-//       break
-//     }
-//   }
-//   ranges.forEach((range) => {
-//     if (length) {
-//       if (range - length === 2) {
-//         rangeWidthDots.push(length + 1)
-//       } else if (range - length !== 1) {
-//         rangeWidthDots.push('...')
-//       }
-//     }
-//     rangeWidthDots.push(range)
-//     length = range
-//   })
-//   // console.log(currentPageNumber, totalPageNumber)
-//   return rangeWidthDots
-// }
+const paginationGenerator = (
+  currentPageNumber: number,
+  totalPageNumber: number,
+  width: number = 1
+) => {
+  const prev = currentPageNumber - width
+  const next = currentPageNumber + width + 1
+  const ranges = []
+  const rangeWidthDots: [...number[], string?] = []
+  let length: number
+  for (let i = 1; i <= totalPageNumber; i += 1) {
+    if (i === 1 || i === totalPageNumber || (i >= prev && i <= next)) {
+      ranges.push(i)
+    } else if (i < prev) {
+      i = prev - 1
+    } else if (i > next) {
+      ranges.push(totalPageNumber)
+      break
+    }
+  }
+  ranges.forEach((range) => {
+    if (length) {
+      if (range - length === 2) {
+        rangeWidthDots.push(length + 1)
+      } else if (range - length !== 1) {
+        rangeWidthDots.push('...')
+      }
+    }
+    rangeWidthDots.push(range)
+    length = range
+  })
+  // console.log(currentPageNumber, totalPageNumber)
+  return rangeWidthDots
+}
 ---
 
-<!-- 
 <div class="container">
   <ul class="list">
     {
       paginationGenerator(currentPageNumber, totalPageNumber).map((page) => (
+        // page === 1 ? (
+        //   <li class="item">
+        //     <a href="/" class="itemLink">
+        //       {page}
+        //     </a>
+        //   </li>
+        // ) : (
+        //   <li class="item">
+        //     <a href={`/${page}/`} class="itemLink">
+        //       {page}
+        //     </a>
+        //   </li>
+        // )
         <li class="item">
-          <a href={`/page/${page}/`} class="itemLink">
+          <a href={`/${page}/`} class="itemLink">
             {page}
           </a>
         </li>
@@ -86,4 +98,4 @@
     border: 1px solid var(--color-text-black);
     border-radius: 50%;
   }
-</style> -->
+</style>
