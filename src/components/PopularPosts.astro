@@ -1,23 +1,16 @@
 ---
 import { Image } from '@astrojs/image/components'
+import { client } from '../lib/newt/client'
 
-const posts = [
-  {
-    imgSrc: '/asset/img/home/post_01.jpg',
-    imgAlt: 'post1',
-    title: '自分の考えているキャリアプランを発表します',
+const postsData = await client.getContents({
+  appUid: import.meta.env.PUBLIC_NEWT_APP_UID,
+  modelUid: import.meta.env.PUBLIC_NEWT_MODEL_POST,
+  query: {
+    popular: true,
+    limit: 3,
   },
-  {
-    imgSrc: '/asset/img/home/post_02.jpg',
-    imgAlt: 'post2',
-    title: '自分の考えているキャリアプランを発表します',
-  },
-  {
-    imgSrc: '/asset/img/home/post_03.jpg',
-    imgAlt: 'post3',
-    title: '自分の考えているキャリアプランを発表します',
-  },
-]
+})
+const postsContents = postsData.items
 ---
 
 <div class="container">
@@ -25,18 +18,18 @@ const posts = [
   <div class="main">
     <ul class="mainList">
       {
-        posts.map((post) => (
+        postsContents.map((postsContent) => (
           <li class="mainItem">
-            <a href="" class="mainItemLink">
+            <a href={`/${postsContent.slug}/`} class="mainItemLink">
               <Image
-                src={post.imgSrc}
-                alt={post.imgAlt}
-                width={90}
-                height={90}
+                src={postsContent.thumbnail.src}
+                alt={postsContent.thumbnail.altText}
+                width={postsContent.thumbnail.width}
+                height={postsContent.thumbnail.height}
                 class="mainItemLinkImg"
               />
               <div class="mainItemLinkContent">
-                <p class="mainItemLinkContentTitle">{post.title}</p>
+                <p class="mainItemLinkContentTitle">{postsContent.title}</p>
               </div>
             </a>
           </li>
