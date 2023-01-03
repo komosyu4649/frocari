@@ -11,9 +11,9 @@ export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
   const postsData = await client.getContents({
     appUid: import.meta.env.PUBLIC_NEWT_APP_UID,
     modelUid: import.meta.env.PUBLIC_NEWT_MODEL_POST,
-    query: {
-      limit: 10,
-    },
+    // query: {
+    //   limit: 10,
+    // },
   })
   const postsContents = postsData.items
   return paginate(postsContents, { pageSize: 2 })
@@ -24,12 +24,18 @@ const kvTitleJa = 'すべての記事'
 const kvProps = { kvTitleEn, kvTitleJa }
 
 const { page } = Astro.props
+
+const pageProps = { page }
 ---
 
 <Layout title="Welcome to Astro.">
   <main class="container">
     <div class="main">
-      <!-- <MainPosts kvProps={kvProps} page={page} /> -->
+      <MainPosts
+        kvProps={kvProps}
+        pageProps={pageProps}
+        postsContents={page.data}
+      />
       <PopularPosts />
     </div>
     <SideBar />
