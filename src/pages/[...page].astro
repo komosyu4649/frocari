@@ -11,12 +11,9 @@ export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
   const postsData = await client.getContents({
     appUid: import.meta.env.PUBLIC_NEWT_APP_UID,
     modelUid: import.meta.env.PUBLIC_NEWT_MODEL_POST,
-    // query: {
-    //   limit: 10,
-    // },
   })
   const postsContents = postsData.items
-  return paginate(postsContents, { pageSize: 2 })
+  return paginate(postsContents, { pageSize: 10 })
 }
 
 const kvTitleEn = 'all'

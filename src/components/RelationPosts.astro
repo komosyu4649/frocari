@@ -11,7 +11,7 @@ const { relationContents } = Astro.props
       {
         relationContents.map((relationContent) => (
           <li class="mainItem">
-            <a href={relationContent.slug} class="mainItemLink">
+            <a href={`/${relationContent.slug}/`} class="mainItemLink">
               <Image
                 src={relationContent.thumbnail.src}
                 alt={relationContent.thumbnail.altText}

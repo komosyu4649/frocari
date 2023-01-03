@@ -52,36 +52,38 @@ const paginationGenerator = (
 }
 ---
 
-<div class="container">
-  <ul class="list">
-    {
-      paginationGenerator(currentPageNumber, totalPageNumber).map((page) => {
-        if (page === 1) {
+{
+  totalPageNumber > 1 && (
+    <div class="container">
+      <ul class="list">
+        {paginationGenerator(currentPageNumber, totalPageNumber).map((page) => {
+          if (page === 1) {
+            return (
+              <li class="item">
+                <a href={pageUrl} class="itemLink">
+                  {page}
+                </a>
+              </li>
+            )
+          } else if (page === '...') {
+            return (
+              <li class="item">
+                <span class="itemLink">{page}</span>
+              </li>
+            )
+          }
           return (
             <li class="item">
-              <a href={pageUrl} class="itemLink">
+              <a href={`${pageUrl}${page}/`} class="itemLink">
                 {page}
               </a>
             </li>
           )
-        } else if (page === '...') {
-          return (
-            <li class="item">
-              <span class="itemLink">{page}</span>
-            </li>
-          )
-        }
-        return (
-          <li class="item">
-            <a href={`${pageUrl}${page}/`} class="itemLink">
-              {page}
-            </a>
-          </li>
-        )
-      })
-    }
-  </ul>
-</div>
+        })}
+      </ul>
+    </div>
+  )
+}
 
 <style lang="scss">
   .container {
