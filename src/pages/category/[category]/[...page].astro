@@ -1,5 +1,9 @@
 ---
+import PopularPosts from '../../../components/PopularPosts.astro'
+import Layout from '../../../layouts/Layout.astro'
 import { client } from '../../../lib/newt/client'
+import SideBar from '../../../components/SideBar.astro'
+import MainPosts from '../../../components/MainPosts.astro'
 
 export async function getStaticPaths({ paginate }) {
   const categoryData = await client.getContents({
@@ -16,14 +20,51 @@ export async function getStaticPaths({ paginate }) {
       (item) => item.category.slug === categoryContent.slug
     )
     return paginate(postsContents, {
-      params: { category: categoryContent.slug },
+      params: {
+        category: categoryContent.slug,
+      },
+      props: { name: categoryContent.name },
       pageSize: 1,
     })
   })
 }
-const { page } = Astro.props
-const params = Astro.params
-console.log(page, params)
+const { page, name } = Astro.props
+const { category } = Astro.params
+// console.log(page, postsContents, name, category)
+
+const kvTitleEn = 'category'
+const kvTitleJa = name
+const kvProps = { kvTitleEn, kvTitleJa }
+
+const pageType = kvTitleEn
+const pageSlug = category
+
+const pageProps = { page, pageType, pageSlug }
+// console.log(pageProps)
+// console.log(category, kvTitleEn)
 ---
 
-<div class="">[category][page]</div>
+<Layout title="category">
+  <main class="container">
+    <div class="main">
+      <MainPosts
+        kvProps={kvProps}
+        pageProps={pageProps}
+        postsContents={page.data}
+      />
+      <PopularPosts />
+    </div>
+    <SideBar />
+  </main>
+</Layout>
+
+<style lang="scss">
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 28rem;
+    gap: 7.5rem;
+    width: 126.5rem;
+    // margin: 8rem auto 0;
+    margin: 0 auto;
+  }
+</style>

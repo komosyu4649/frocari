@@ -1,6 +1,10 @@
 ---
-const { page } = Astro.props
-console.log(page)
+const { pageProps } = Astro.props
+const { page, pageType, pageSlug } = pageProps
+// console.log(page, pageType, pageSlug)
+
+const pageUrl = pageType ? `/${pageType}/${pageSlug}/` : '/'
+// console.log(pageUrl)
 
 const url = new URL(Astro.request.url)
 
@@ -55,13 +59,13 @@ const paginationGenerator = (
         (page) =>
           page === 1 ? (
             <li class="item">
-              <a href="/" class="itemLink">
+              <a href={pageUrl} class="itemLink">
                 {page}
               </a>
             </li>
           ) : (
             <li class="item">
-              <a href={`/${page}/`} class="itemLink">
+              <a href={`${pageUrl}${page}/`} class="itemLink">
                 {page}
               </a>
             </li>
