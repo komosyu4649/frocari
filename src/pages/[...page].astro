@@ -1,11 +1,10 @@
 ---
+import type { GetStaticPathsOptions } from 'astro'
+import { client } from '@lib/newt/client'
 import Layout from '@layouts/Layout.astro'
-import Card from '@components/Card.astro'
 import SideBar from '@components/SideBar.astro'
 import MainPosts from '@components/MainPosts.astro'
 import PopularPosts from '@components/PopularPosts.astro'
-import { client } from '@lib/newt/client'
-import type { GetStaticPathsOptions } from 'astro'
 
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
   const postsData = await client.getContents({
@@ -45,7 +44,6 @@ const pageProps = { page }
     grid-template-columns: 1fr 28rem;
     gap: 7.5rem;
     width: 126.5rem;
-    // margin: 8rem auto 0;
     margin: 0 auto;
   }
 </style>

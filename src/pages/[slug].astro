@@ -1,11 +1,9 @@
 ---
 import { client } from '@lib/newt/client'
-
 import Layout from '@layouts/Layout.astro'
 import SideBar from '@components/SideBar.astro'
 import PostContent from '@components/PostContent.astro'
 import RelationPosts from '@components/RelationPosts.astro'
-import type { Post } from '@type'
 
 export async function getStaticPaths() {
   const postsData = await client.getContents({
@@ -15,13 +13,16 @@ export async function getStaticPaths() {
       depth: 2,
     },
   })
+
   const postsContents = postsData.items
-  // console.log(postsContents)
-  const pages = postsContents.map((postsContent) => {
-    // console.log(postsContent)
+
+  const pages: {
+    params: { slug: string }
+    props: { postsContent: unknown }
+  }[] = (postsContents as unknown[]).map((postsContent: unknown) => {
     return {
       params: {
-        slug: postsContent.slug,
+        slug: (postsContent as { slug: string }).slug,
       },
       props: {
         postsContent,
@@ -33,6 +34,8 @@ export async function getStaticPaths() {
 
 const { postsContent } = Astro.props
 
+const relationContents = postsContent.relation
+
 const breadcrumbItems = [
   {
     name: 'ホーム',
@@ -43,8 +46,6 @@ const breadcrumbItems = [
     href: `/${postsContent.slug}/`,
   },
 ]
-
-const relationContents = postsContent.relation
 ---
 
 <Layout title={}>

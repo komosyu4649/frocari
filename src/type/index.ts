@@ -1,7 +1,12 @@
 export type Post = {
   _id: string
   _sys: {
-    raw: [Object]
+    raw: {
+      createdAt: string
+      updatedAt: string
+      firstPublishedAt: string
+      publishedAt: string
+    }
     customOrder: number
     createdAt: string
     updatedAt: string
@@ -26,16 +31,35 @@ export type Post = {
   content: string
   category: {
     _id: string
-    _sys: [Object]
+    _sys: {
+      raw: any
+      customOrder: number
+      createdAt: string
+      updatedAt: string
+    }
     name: string
     slug: string
   }
-  tag: [
-    {
-      name: string
-      slug: string
-    }
-  ]
+  tag: {
+    _id: string
+    _sys: any
+    name: string
+    slug: string
+  }[]
+  relation: {
+    _id: string
+    _sys: any
+    title: string
+    slug: string
+    thumbnail: any
+    date: string
+    introduction: string
+    content: string
+    category: any
+    tag: any[]
+    relation: any[]
+    popular: boolean
+  }[]
 }
 
 export type Category = {
