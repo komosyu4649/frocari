@@ -21,6 +21,7 @@
     "@types/node": "^18.11.18",
     "prettier": "^2.8.1",
     "prettier-plugin-astro": "^0.7.0",
-    "sass": "^1.57.1"
+    "sass": "^1.57.1",
+    "tsconfig-paths": "^4.1.2"
   }
 }

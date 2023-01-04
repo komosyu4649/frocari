@@ -1,14 +1,13 @@
 ---
-import AboutMain from '../../components/AboutMain.astro'
-import Kv from '../../components/Kv.astro'
-import SideBar from '../../components/SideBar.astro'
-import Layout from '../../layouts/Layout.astro'
+import Layout from '@layouts/Layout.astro'
+import AboutMain from '@components/AboutMain.astro'
+import SideBar from '@components/SideBar.astro'
 
 const kvTitleEn = 'about'
 const kvTitleJa = 'frocariについて'
 const kvProps = { kvTitleEn, kvTitleJa }
 
-const items = [
+const breadcrumbItems = [
   {
     name: 'ホーム',
     href: '/',
@@ -25,7 +24,7 @@ const items = [
     <div class="main">
       <AboutMain kvProps={kvProps} />
     </div>
-    <SideBar items={items} />
+    <SideBar breadcrumbItems={breadcrumbItems} />
   </main>
 </Layout>
 

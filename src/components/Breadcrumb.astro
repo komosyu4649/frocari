@@ -1,13 +1,13 @@
 ---
-import type { Breadcrumb } from '../../type'
+import type { Breadcrumb } from '@type'
 
-const { items } = Astro.props
+const { breadcrumbItems } = Astro.props
 ---
 
 <div class="container">
   <ul class="list">
     {
-      items.map((item: Breadcrumb) => (
+      breadcrumbItems.map((item: Breadcrumb) => (
         <li class="item">
           <a href={item.href} class="c-text__link itemLink">
             {item.name}

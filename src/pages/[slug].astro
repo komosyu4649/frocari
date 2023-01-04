@@ -1,22 +1,11 @@
 ---
-import { client } from '../lib/newt/client'
+import { client } from '@lib/newt/client'
 
-import Layout from '../layouts/Layout.astro'
-import SideBar from '../components/SideBar.astro'
-import PostContent from '../components/PostContent.astro'
-import RelationPosts from '../components/RelationPosts.astro'
-import type { Post } from '../../type'
-
-const items = [
-  {
-    name: 'ホーム',
-    href: '/',
-  },
-  {
-    name: '自分の考えているキャリアプランを発表しますというお話でございますよ皆様ね',
-    href: '/post/',
-  },
-]
+import Layout from '@layouts/Layout.astro'
+import SideBar from '@components/SideBar.astro'
+import PostContent from '@components/PostContent.astro'
+import RelationPosts from '@components/RelationPosts.astro'
+import type { Post } from '@type'
 
 export async function getStaticPaths() {
   const postsData = await client.getContents({
@@ -43,6 +32,18 @@ export async function getStaticPaths() {
 }
 
 const { postsContent } = Astro.props
+
+const breadcrumbItems = [
+  {
+    name: 'ホーム',
+    href: '/',
+  },
+  {
+    name: postsContent.title,
+    href: `/${postsContent.slug}/`,
+  },
+]
+
 const relationContents = postsContent.relation
 ---
 
@@ -52,7 +53,7 @@ const relationContents = postsContent.relation
       <PostContent postsContent={postsContent} />
       <RelationPosts relationContents={relationContents} />
     </div>
-    <SideBar items={items} />
+    <SideBar breadcrumbItems={breadcrumbItems} />
   </main>
 </Layout>
 

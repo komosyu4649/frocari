@@ -1,10 +1,10 @@
 ---
 import type { GetStaticPathsOptions } from 'astro'
-import MainPosts from '../../../components/MainPosts.astro'
-import PopularPosts from '../../../components/PopularPosts.astro'
-import SideBar from '../../../components/SideBar.astro'
-import Layout from '../../../layouts/Layout.astro'
-import { client } from '../../../lib/newt/client'
+import MainPosts from '@components/MainPosts.astro'
+import PopularPosts from '@components/PopularPosts.astro'
+import SideBar from '@components/SideBar.astro'
+import Layout from '@layouts/Layout.astro'
+import { client } from '@lib/newt/client'
 
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
   const keywordsData = await client.getContents({
