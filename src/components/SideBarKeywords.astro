@@ -26,6 +26,8 @@ const tagItems = tagData.items
 </div>
 
 <style lang="scss">
+  @use '../styles/variable' as var;
+
   .container {
     // margin-top: 6rem;
   }
@@ -55,5 +57,22 @@ const tagItems = tagData.items
     background-repeat: no-repeat;
     background-size: 100% 1px;
     background-position: 0 100%;
+  }
+
+  @media screen and (max-width: var.$break-point-sp) {
+    .container {
+      margin-top: 5rem;
+    }
+    .title {
+      // margin-bottom: 1.5rem;
+      color: var(--color-white);
+    }
+    .main {
+      border: 1px solid var(--color-white);
+    }
+    .mainItemLink {
+      color: var(--color-white);
+      background-image: linear-gradient(var(--color-white), var(--color-white));
+    }
   }
 </style>

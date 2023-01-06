@@ -51,6 +51,8 @@ const { postsContents } = Astro.props
 }
 
 <style lang="scss">
+  @use '../styles/variable' as var;
+
   .item {
     position: relative;
     display: grid;
@@ -114,5 +116,26 @@ const { postsContents } = Astro.props
     background-size: 100% 1px;
     background-position: 0 100%;
     z-index: 1;
+  }
+
+  @media screen and (max-width: var.$break-point-sp) {
+    .item {
+      gap: 1.5rem;
+    }
+    .itemLinkImg {
+      width: 10rem;
+      height: 10rem;
+      border-radius: 3rem;
+    }
+    .itemLinkContentInfoCategory {
+      min-height: 2rem;
+      padding: 0.15rem 1.15rem;
+    }
+    .itemLinkContentTitle {
+      margin: 0.5rem 0 1rem;
+      font-size: 1.6rem;
+      // font-size: 1.4rem;
+      line-height: 1.5;
+    }
   }
 </style>

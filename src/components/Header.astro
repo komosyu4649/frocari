@@ -1,5 +1,7 @@
 ---
 import { client } from '@lib/newt/client'
+import SideBarSearch from './SideBarSearch.astro'
+import SideBarKeywords from './SideBarKeywords.astro'
 
 const categoryData = await client.getContents({
   appUid: import.meta.env.PUBLIC_NEWT_APP_UID,
@@ -11,7 +13,6 @@ const categoryItems = categoryData.items
 <header class="container">
   <div class="inner">
     <!-- logo -->
-    <!-- <h1 class="logo"> -->
     <a href="/" class="logo">
       <!-- <Image src="/asset/logo.svg" alt="frocari" width="56" height="17" /> -->
       <img
@@ -22,51 +23,154 @@ const categoryItems = categoryData.items
         class="logoInside"
       />
     </a>
-    <!-- </h1> -->
+
+    <!-- sp menu trigger -->
+    <button class="spMenuTrigger">
+      <span class="spMenuTriggerLine"></span>
+      <span class="spMenuTriggerLine"></span>
+    </button>
+
     <!-- menu -->
-    <nav class="menu">
-      <ul class="menuList">
-        {
-          categoryItems.map((categoryItem) => (
-            <li class="menuItem">
-              <a href={`/category/${categoryItem.slug}/`} class="menuItemLink">
-                {categoryItem.name}
+    <div class="menu">
+      <div class="menuInner">
+        <!-- main -->
+        <nav class="menuMain">
+          <ul class="menuMainList">
+            {
+              categoryItems.map((categoryItem) => (
+                <li class="menuMainItem">
+                  <a
+                    href={`/category/${categoryItem.slug}/`}
+                    class="menuMainItemLink"
+                  >
+                    <span class="menuMainItemLinkEn">{categoryItem.slug}</span>
+                    <span class="menuMainItemLinkJa">{categoryItem.name}</span>
+                  </a>
+                </li>
+              ))
+            }
+            <li class="menuMainItem">
+              <a href="/about/" class="menuMainItemLink">
+                <span class="menuMainItemLinkEn">about</span>
+                <span class="menuMainItemLinkJa">frocariについて</span>
               </a>
             </li>
-          ))
-        }
-        <li class="menuItem">
-          <a href="/about/" class="menuItemLink"> frocariについて</a>
-        </li>
-      </ul>
-    </nav>
+          </ul>
+        </nav>
+        <!-- sub -->
+        <div class="menuSub">
+          <SideBarSearch />
+          <SideBarKeywords />
+        </div>
+      </div>
+    </div>
   </div>
 </header>
 
 <style lang="scss">
+  @use '../styles/variable' as var;
+
   .inner {
     display: flex;
     flex-direction: column;
     align-items: center;
+    border-bottom: 1px solid var(--color-black);
   }
   .logo {
     display: inline-block;
     padding: 2.5rem;
   }
+  .spMenuTrigger {
+    display: none;
+  }
   .menu {
     width: 100%;
     border-top: 1px solid var(--color-black);
-    border-bottom: 1px solid var(--color-black);
+    // border-bottom: 1px solid var(--color-black);
   }
-  .menuList {
+  .menuMainList {
     display: flex;
     flex-direction: row;
     justify-content: center;
   }
-  .menuItemLink {
+  .menuMainItemLink {
     display: inline-block;
     padding: 2rem;
+  }
+  .menuMainItemLinkEn {
+    display: none;
+  }
+  .menuMainItemLinkJa {
     font-size: 1.4rem;
-    // font-weight: bold;
+  }
+  .menuSub {
+    display: none;
+  }
+
+  @media screen and (max-width: var.$break-point-sp) {
+    .container {
+      height: 6.7rem;
+    }
+    .inner {
+      position: relative;
+    }
+    .spMenuTrigger {
+      position: fixed;
+      bottom: 1.75rem;
+      right: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      justify-content: center;
+      align-items: center;
+      width: 4.6rem;
+      height: 4.6rem;
+      background-color: var(--color-black);
+      border-radius: 1.5rem;
+      z-index: 6;
+    }
+    .spMenuTriggerLine {
+      display: inline-block;
+      width: 3.2rem;
+      height: 1px;
+      background-color: var(--color-white);
+    }
+    .menu {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      min-height: 100vh;
+      background-color: var(--color-black);
+      z-index: 5;
+      display: none;
+    }
+    .menuMain {
+      margin-top: 3rem;
+    }
+    .menuMainList {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3rem;
+    }
+    .menuMainItemLink {
+      display: flex;
+      flex-direction: column;
+    }
+    .menuMainItemLinkEn {
+      display: inline-block;
+      font-size: 3.6rem;
+      font-family: 'Urbanist', sans-serif;
+      font-weight: bold;
+      color: var(--color-white);
+    }
+    .menuMainItemLinkJa {
+      // font-weight: bold;
+      color: var(--color-white);
+    }
+    .menuSub {
+      display: block;
+      margin: 6rem 2rem 0;
+    }
   }
 </style>

@@ -15,11 +15,19 @@ const { breadcrumbItems } = Astro.props
 </section>
 
 <style lang="scss">
+  @use '../styles/variable' as var;
+
   .container {
     position: sticky;
     top: 0;
     height: fit-content;
     margin-top: 4rem;
     padding-top: 4rem;
+  }
+
+  @media screen and (max-width: var.$break-point-sp) {
+    .container {
+      display: none;
+    }
   }
 </style>
