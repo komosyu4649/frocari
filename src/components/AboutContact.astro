@@ -14,10 +14,18 @@
 </section>
 
 <style lang="scss">
+  @use '../styles/variable' as var;
+
   .cotainer {
     margin-top: 8rem;
   }
   .title {
     margin-bottom: 1.5rem;
+  }
+
+  @media screen and (max-width: var.$break-point-sp) {
+    .cotainer {
+      margin-top: 3.5rem;
+    }
   }
 </style>
