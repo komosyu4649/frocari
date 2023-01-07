@@ -40,6 +40,8 @@ const postsContents = postsData.items
 </div>
 
 <style lang="scss">
+  @use '../styles/variable' as var;
+
   .container {
     margin-top: 8rem;
   }
@@ -69,6 +71,7 @@ const postsContents = postsData.items
     display: inline;
     font-size: 1.4rem;
     font-weight: bold;
+    line-height: 1.5rem;
     background-image: linear-gradient(
       var(--color-text-black),
       var(--color-text-black)
@@ -76,5 +79,25 @@ const postsContents = postsData.items
     background-repeat: no-repeat;
     background-size: 100% 1px;
     background-position: 0 100%;
+  }
+
+  @media screen and (max-width: var.$break-point-sp) {
+    .container {
+      margin-top: 6rem;
+    }
+    .title {
+      margin-bottom: 1.5rem;
+    }
+    .mainList {
+      grid-template-columns: auto;
+      gap: 1rem;
+    }
+    .mainItemLinkImg {
+      width: 10rem;
+      height: 10rem;
+    }
+    .mainItemLinkContentTitle {
+      font-size: 1.6rem;
+    }
   }
 </style>

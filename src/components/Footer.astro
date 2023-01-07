@@ -29,6 +29,8 @@ const categoryItems = categoryData.items
 </footer>
 
 <style lang="scss">
+  @use '../styles/variable' as var;
+
   .container {
     display: inline-flex;
     flex-direction: column;
@@ -45,7 +47,8 @@ const categoryItems = categoryData.items
     justify-content: center;
   }
   .menuItem {
-    &:last-child {
+    // &:last-child {
+    &:first-child {
       .menuItemLink {
         &::before {
           content: none;
@@ -61,7 +64,7 @@ const categoryItems = categoryData.items
     &::before {
       position: absolute;
       top: calc(50% - 0.75rem);
-      right: 0;
+      left: 0;
       content: '';
       width: 1px;
       height: 1.5rem;
@@ -71,5 +74,20 @@ const categoryItems = categoryData.items
   .copy {
     font-size: 1.2rem;
     font-family: 'Urbanist', sans-serif;
+  }
+
+  @media screen and (max-width: var.$break-point-sp) {
+    .container {
+      margin: 8rem 0 2rem;
+    }
+    .menu {
+      margin-bottom: 5rem;
+    }
+    .menuList {
+      flex-wrap: wrap;
+    }
+    .menuItemLink {
+      padding: 0.5rem 1.5rem;
+    }
   }
 </style>

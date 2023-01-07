@@ -10,6 +10,8 @@ const { kvProps } = Astro.props
 </div>
 
 <style lang="scss">
+  @use '../styles/variable' as var;
+
   .container {
     position: relative;
     margin-bottom: 4rem;
@@ -36,5 +38,25 @@ const { kvProps } = Astro.props
   .titleJa {
     font-size: 2.6rem;
     font-weight: bold;
+  }
+
+  @media screen and (max-width: var.$break-point-sp) {
+    .container {
+      margin-bottom: 3rem;
+      padding-bottom: 1.5rem;
+      &::before {
+        width: 3rem;
+      }
+    }
+    .title {
+      gap: 0.5rem;
+    }
+    .titleEn {
+      font-size: 1.2rem;
+    }
+    .titleJa {
+      // font-size: 1.8rem;
+      font-size: 2rem;
+    }
   }
 </style>

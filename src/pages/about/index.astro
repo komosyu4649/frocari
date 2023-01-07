@@ -29,11 +29,21 @@ const breadcrumbItems = [
 </Layout>
 
 <style lang="scss">
+  @use '../../styles/variable' as var;
+
   .container {
     display: grid;
     grid-template-columns: 1fr 28rem;
     gap: 7.5rem;
     width: 126.5rem;
     margin: 0 auto;
+  }
+
+  @media screen and (max-width: var.$break-point-sp) {
+    .container {
+      grid-template-columns: auto;
+      width: 34rem;
+      margin: 0 auto;
+    }
   }
 </style>
