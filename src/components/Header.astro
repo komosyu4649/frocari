@@ -26,8 +26,9 @@ const categoryItems = categoryData.items
 
     <!-- sp menu trigger -->
     <button class="spMenuTrigger">
-      <span class="spMenuTriggerLine"></span>
-      <span class="spMenuTriggerLine"></span>
+      <span class="spMenuTriggerInside">menu</span>
+      <!-- <span class="spMenuTriggerLine"></span>
+      <span class="spMenuTriggerLine"></span> -->
     </button>
 
     <!-- menu -->
@@ -59,7 +60,7 @@ const categoryItems = categoryData.items
         </nav>
         <!-- sub -->
         <div class="menuSub">
-          <SideBarSearch />
+          <!-- <SideBarSearch /> -->
           <SideBarKeywords />
         </div>
       </div>
@@ -123,27 +124,40 @@ const categoryItems = categoryData.items
       gap: 0.4rem;
       justify-content: center;
       align-items: center;
-      width: 4.6rem;
-      height: 4.6rem;
+      // width: 4.6rem;
+      // height: 4.6rem;
+      width: 5.5rem;
+      height: 5.5rem;
       background-color: var(--color-black);
-      border-radius: 1.5rem;
+      // border-radius: 1.5rem;
+      border-radius: 2rem;
+      border: 2px solid var(--color-white);
       z-index: 6;
     }
-    .spMenuTriggerLine {
-      display: inline-block;
-      width: 3.2rem;
-      height: 1px;
-      background-color: var(--color-white);
+    .spMenuTriggerInside {
+      color: var(--color-white);
+      font-size: 1.2rem;
     }
+    // .spMenuTriggerLine {
+    //   display: inline-block;
+    //   width: 3.2rem;
+    //   height: 1px;
+    //   background-color: var(--color-white);
+    // }
     .menu {
       position: fixed;
       top: 0;
       left: 0;
       width: 100vw;
-      min-height: 100vh;
+      height: 100vh;
       background-color: var(--color-black);
+      overflow: scroll;
       z-index: 5;
-      display: none;
+      // display: none;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.7s, visibility 0.7s;
+      pointer-events: none;
     }
     .menuMain {
       margin-top: 3rem;
@@ -151,7 +165,7 @@ const categoryItems = categoryData.items
     .menuMainList {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 3rem;
+      // gap: 3rem;
     }
     .menuMainItemLink {
       display: flex;
@@ -170,7 +184,33 @@ const categoryItems = categoryData.items
     }
     .menuSub {
       display: block;
-      margin: 6rem 2rem 0;
+      // margin: 6rem 2rem 0;
+      margin: 6rem 2rem 8rem;
+    }
+
+    .is-open__menu {
+      .menu {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: all;
+        transition: opacity 0.3s, visibility 0.3s;
+      }
+      .spMenuTrigger {
+        background-color: var(--color-white);
+        border: 2px solid var(--color-black);
+      }
+      .spMenuTriggerInside {
+        color: var(--color-black);
+      }
     }
   }
 </style>
+
+<script is:inline>
+  const container = document.querySelector('.container')
+  const menuTrigger = document.querySelector('.spMenuTrigger')
+
+  menuTrigger.addEventListener('click', () => {
+    container.classList.toggle('is-open__menu')
+  })
+</script>
