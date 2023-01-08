@@ -14,31 +14,33 @@ const postsData: PostData = await client.getContents({
 const postsContents: PostItem[] = postsData.items
 ---
 
-<div class="container">
-  <h2 class="title">人気の記事</h2>
-  <div class="main">
-    <ul class="mainList">
-      {
-        postsContents.map((postsContent: PostItem) => (
-          <li class="mainItem">
-            <a href={`/${postsContent.slug}/`} class="mainItemLink">
-              <Image
-                src={postsContent.thumbnail.src}
-                alt={postsContent.thumbnail.altText}
-                width={postsContent.thumbnail.width}
-                height={postsContent.thumbnail.height}
-                class="mainItemLinkImg"
-              />
-              <div class="mainItemLinkContent">
-                <p class="mainItemLinkContentTitle">{postsContent.title}</p>
-              </div>
-            </a>
-          </li>
-        ))
-      }
-    </ul>
-  </div>
-</div>
+{
+  postsContents.length >= 1 && (
+    <div class="container">
+      <h2 class="title">人気の記事</h2>
+      <div class="main">
+        <ul class="mainList">
+          {postsContents.map((postsContent: PostItem) => (
+            <li class="mainItem">
+              <a href={`/${postsContent.slug}/`} class="mainItemLink">
+                <Image
+                  src={postsContent.thumbnail.src}
+                  alt={postsContent.thumbnail.altText}
+                  width={postsContent.thumbnail.width}
+                  height={postsContent.thumbnail.height}
+                  class="mainItemLinkImg"
+                />
+                <div class="mainItemLinkContent">
+                  <p class="mainItemLinkContentTitle">{postsContent.title}</p>
+                </div>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  )
+}
 
 <style lang="scss">
   @use '../styles/variable' as var;

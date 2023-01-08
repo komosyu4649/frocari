@@ -5,31 +5,35 @@ import type { RelationPost } from '@type/index'
 const { relationContents } = Astro.props
 ---
 
-<div class="container">
-  <h2 class="title">関連記事</h2>
-  <div class="main">
-    <ul class="mainList">
-      {
-        relationContents.map((relationContent: RelationPost) => (
-          <li class="mainItem">
-            <a href={`/${relationContent.slug}/`} class="mainItemLink">
-              <Image
-                src={relationContent.thumbnail.src}
-                alt={relationContent.thumbnail.altText}
-                width={relationContent.thumbnail.width}
-                height={relationContent.thumbnail.height}
-                class="mainItemLinkImg"
-              />
-              <div class="mainItemLinkContent">
-                <p class="mainItemLinkContentTitle">{relationContent.title}</p>
-              </div>
-            </a>
-          </li>
-        ))
-      }
-    </ul>
-  </div>
-</div>
+{
+  relationContents.length >= 1 && (
+    <div class="container">
+      <h2 class="title">関連記事</h2>
+      <div class="main">
+        <ul class="mainList">
+          {relationContents.map((relationContent: RelationPost) => (
+            <li class="mainItem">
+              <a href={`/${relationContent.slug}/`} class="mainItemLink">
+                <Image
+                  src={relationContent.thumbnail.src}
+                  alt={relationContent.thumbnail.altText}
+                  width={relationContent.thumbnail.width}
+                  height={relationContent.thumbnail.height}
+                  class="mainItemLinkImg"
+                />
+                <div class="mainItemLinkContent">
+                  <p class="mainItemLinkContentTitle">
+                    {relationContent.title}
+                  </p>
+                </div>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  )
+}
 
 <style lang="scss">
   @use '../styles/variable' as var;

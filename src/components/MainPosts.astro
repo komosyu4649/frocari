@@ -2,7 +2,6 @@
 import Kv from './Kv.astro'
 import MainPost from './MainPost.astro'
 import Pagination from './Pagination.astro'
-import PopularPosts from './PopularPosts.astro'
 
 const { kvProps, pageProps, postsContents } = Astro.props
 ---
@@ -13,7 +12,6 @@ const { kvProps, pageProps, postsContents } = Astro.props
     <MainPost postsContents={postsContents} />
   </ul>
   <Pagination pageProps={pageProps} />
-  <!-- <PopularPosts /> -->
 </div>
 
 <style lang="scss">
