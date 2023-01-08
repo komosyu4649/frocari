@@ -4,25 +4,22 @@ import Layout from '@layouts/Layout.astro'
 import SideBar from '@components/SideBar.astro'
 import PostContent from '@components/PostContent.astro'
 import RelationPosts from '@components/RelationPosts.astro'
+import type { PostData, PostItem } from '@type/index'
 
 export async function getStaticPaths() {
-  const postsData = await client.getContents({
+  const postsData: PostData = await client.getContents({
     appUid: import.meta.env.PUBLIC_NEWT_APP_UID,
     modelUid: import.meta.env.PUBLIC_NEWT_MODEL_POST,
     query: {
       depth: 2,
     },
   })
+  const postsContents: PostItem[] = postsData.items
 
-  const postsContents = postsData.items
-
-  const pages: {
-    params: { slug: string }
-    props: { postsContent: unknown }
-  }[] = (postsContents as unknown[]).map((postsContent: unknown) => {
+  const pages = postsContents.map((postsContent: PostItem) => {
     return {
       params: {
-        slug: (postsContent as { slug: string }).slug,
+        slug: postsContent.slug,
       },
       props: {
         postsContent,

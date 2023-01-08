@@ -1,24 +1,32 @@
 ---
-import PopularPosts from '@components/PopularPosts.astro'
-import Layout from '@layouts/Layout.astro'
 import { client } from '@lib/newt/client'
+import type { GetStaticPathsOptions } from 'astro'
+import type {
+  CategoryData,
+  CategoryItem,
+  PostData,
+  PostItem,
+} from '@type/index'
+import Layout from '@layouts/Layout.astro'
+import PopularPosts from '@components/PopularPosts.astro'
 import SideBar from '@components/SideBar.astro'
 import MainPosts from '@components/MainPosts.astro'
-import type { GetStaticPathsOptions } from 'astro'
 
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
-  const categoryData = await client.getContents({
+  const categoryData: CategoryData = await client.getContents({
     appUid: import.meta.env.PUBLIC_NEWT_APP_UID,
     modelUid: import.meta.env.PUBLIC_NEWT_MODEL_CATEGORY,
   })
-  const categoryContents = categoryData.items
-  const postData = await client.getContents({
+  const categoryContents: CategoryItem[] = categoryData.items
+
+  const postData: PostData = await client.getContents({
     appUid: import.meta.env.PUBLIC_NEWT_APP_UID,
     modelUid: import.meta.env.PUBLIC_NEWT_MODEL_POST,
   })
-  return categoryContents.map((categoryContent) => {
-    const postsContents = postData.items.filter(
-      (item) => item.category.slug === categoryContent.slug
+
+  return categoryContents.map((categoryContent: CategoryItem) => {
+    const postsContents: PostItem[] = postData.items.filter(
+      (item: PostItem) => item.category.slug === categoryContent.slug
     )
     return paginate(postsContents, {
       params: {
@@ -29,9 +37,9 @@ export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
     })
   })
 }
+
 const { page, name } = Astro.props
 const { category } = Astro.params
-// console.log(page, postsContents, name, category)
 
 const kvTitleEn = 'category'
 const kvTitleJa = name
@@ -41,8 +49,6 @@ const pageType = 'category'
 const pageSlug = category
 
 const pageProps = { page, pageType, pageSlug }
-// console.log(pageProps)
-// console.log(category, kvTitleEn)
 ---
 
 <Layout title="category">
@@ -67,7 +73,6 @@ const pageProps = { page, pageType, pageSlug }
     grid-template-columns: 1fr 28rem;
     gap: 7.5rem;
     width: 126.5rem;
-    // margin: 8rem auto 0;
     margin: 0 auto;
   }
 
