@@ -108,21 +108,70 @@ export type CategoryItem = {
   slug: string
 }
 
+export type TagData = {
+  skip: number
+  limit: number
+  total: number
+  items: {
+    _id: string
+    _sys: {}
+    name: string
+    slug: string
+  }[]
+}
+
 export type TagItem = {
   _id: string
   _sys: {
-    raw: {
+    raw?: {
       createdAt: string
       updatedAt: string
       firstPublishedAt: string
       publishedAt: string
     }
+    customOrder?: number
+    createdAt?: string
+    updatedAt?: string
+  }
+  name: string
+  slug: string
+}
+
+export type RelationPost = {
+  _id: string
+  _sys: {
+    raw: {}
     customOrder: number
     createdAt: string
     updatedAt: string
   }
-  name: string
+  title: string
   slug: string
+  thumbnail: {
+    _id: string
+    altText: string
+    description: string
+    fileName: string
+    fileSize: number
+    fileType: string
+    height: number
+    metadata: {}
+    src: string
+    title: string
+    width: number
+  }
+  date: string
+  introduction: string
+  content: string
+  category: {
+    _id: string
+    _sys: {}
+    name: string
+    slug: string
+  }
+  tag: [{}]
+  relation: [{}]
+  popular: boolean
 }
 
 export type Breadcrumb = {

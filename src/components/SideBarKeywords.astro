@@ -1,11 +1,12 @@
 ---
 import { client } from '@lib/newt/client'
+import type { TagData, TagItem } from '@type/index'
 
-const tagData = await client.getContents({
+const tagData: TagData = await client.getContents({
   appUid: import.meta.env.PUBLIC_NEWT_APP_UID,
   modelUid: import.meta.env.PUBLIC_NEWT_MODEL_TAG,
 })
-const tagItems = tagData.items
+const tagItems: TagItem[] = tagData.items
 ---
 
 <div class="container">
@@ -13,7 +14,7 @@ const tagItems = tagData.items
   <div class="main">
     <ul class="mainList">
       {
-        tagItems.map((tagItem) => (
+        tagItems.map((tagItem: TagItem) => (
           <li class="mainItem">
             <a href={`/tag/${tagItem.slug}/`} class="mainItemLink">
               {tagItem.name}
@@ -28,9 +29,6 @@ const tagItems = tagData.items
 <style lang="scss">
   @use '../styles/variable' as var;
 
-  .container {
-    // margin-top: 6rem;
-  }
   .title {
     margin-bottom: 1rem;
     font-size: 1.8rem;
@@ -64,7 +62,6 @@ const tagItems = tagData.items
       margin-top: 5rem;
     }
     .title {
-      // margin-bottom: 1.5rem;
       color: var(--color-white);
     }
     .main {

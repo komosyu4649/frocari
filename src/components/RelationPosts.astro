@@ -1,8 +1,8 @@
 ---
 import { Image } from '@astrojs/image/components'
+import type { RelationPost } from '@type/index'
 
 const { relationContents } = Astro.props
-console.log(relationContents)
 ---
 
 <div class="container">
@@ -10,7 +10,7 @@ console.log(relationContents)
   <div class="main">
     <ul class="mainList">
       {
-        relationContents.map((relationContent) => (
+        relationContents.map((relationContent: RelationPost) => (
           <li class="mainItem">
             <a href={`/${relationContent.slug}/`} class="mainItemLink">
               <Image
