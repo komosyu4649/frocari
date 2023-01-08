@@ -1,13 +1,14 @@
 ---
 import { client } from '@lib/newt/client'
+import type { CategoryData, CategoryItem } from '@type/index'
 import SideBarSearch from './SideBarSearch.astro'
 import SideBarKeywords from './SideBarKeywords.astro'
 
-const categoryData = await client.getContents({
+const categoryData: CategoryData = await client.getContents({
   appUid: import.meta.env.PUBLIC_NEWT_APP_UID,
   modelUid: import.meta.env.PUBLIC_NEWT_MODEL_CATEGORY,
 })
-const categoryItems = categoryData.items
+const categoryItems: CategoryItem[] = categoryData.items
 ---
 
 <header class="container">
@@ -27,8 +28,6 @@ const categoryItems = categoryData.items
     <!-- sp menu trigger -->
     <button class="spMenuTrigger">
       <span class="spMenuTriggerInside">menu</span>
-      <!-- <span class="spMenuTriggerLine"></span>
-      <span class="spMenuTriggerLine"></span> -->
     </button>
 
     <!-- menu -->
@@ -38,7 +37,7 @@ const categoryItems = categoryData.items
         <nav class="menuMain">
           <ul class="menuMainList">
             {
-              categoryItems.map((categoryItem) => (
+              categoryItems.map((categoryItem: CategoryItem) => (
                 <li class="menuMainItem">
                   <a
                     href={`/category/${categoryItem.slug}/`}
@@ -87,7 +86,6 @@ const categoryItems = categoryData.items
   .menu {
     width: 100%;
     border-top: 1px solid var(--color-black);
-    // border-bottom: 1px solid var(--color-black);
   }
   .menuMainList {
     display: flex;
@@ -124,12 +122,9 @@ const categoryItems = categoryData.items
       gap: 0.4rem;
       justify-content: center;
       align-items: center;
-      // width: 4.6rem;
-      // height: 4.6rem;
       width: 5.5rem;
       height: 5.5rem;
       background-color: var(--color-black);
-      // border-radius: 1.5rem;
       border-radius: 2rem;
       border: 2px solid var(--color-white);
       z-index: 6;
@@ -138,12 +133,6 @@ const categoryItems = categoryData.items
       color: var(--color-white);
       font-size: 1.2rem;
     }
-    // .spMenuTriggerLine {
-    //   display: inline-block;
-    //   width: 3.2rem;
-    //   height: 1px;
-    //   background-color: var(--color-white);
-    // }
     .menu {
       position: fixed;
       top: 0;
@@ -153,7 +142,6 @@ const categoryItems = categoryData.items
       background-color: var(--color-black);
       overflow: scroll;
       z-index: 5;
-      // display: none;
       opacity: 0;
       visibility: hidden;
       transition: opacity 0.7s, visibility 0.7s;
@@ -165,7 +153,6 @@ const categoryItems = categoryData.items
     .menuMainList {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      // gap: 3rem;
     }
     .menuMainItemLink {
       display: flex;
@@ -179,12 +166,10 @@ const categoryItems = categoryData.items
       color: var(--color-white);
     }
     .menuMainItemLinkJa {
-      // font-weight: bold;
       color: var(--color-white);
     }
     .menuSub {
       display: block;
-      // margin: 6rem 2rem 0;
       margin: 6rem 2rem 8rem;
     }
 

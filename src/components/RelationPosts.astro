@@ -2,6 +2,7 @@
 import { Image } from '@astrojs/image/components'
 
 const { relationContents } = Astro.props
+console.log(relationContents)
 ---
 
 <div class="container">
@@ -72,9 +73,6 @@ const { relationContents } = Astro.props
   }
 
   @media screen and (max-width: var.$break-point-sp) {
-    .container {
-      // margin-top: 6rem;
-    }
     .title {
       margin-bottom: 1.5rem;
     }

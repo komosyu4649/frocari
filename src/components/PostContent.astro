@@ -1,12 +1,10 @@
 ---
 import dayjs from 'dayjs'
 import { Image } from '@astrojs/image/components'
+import type { TagItem } from '@type/index'
 import PostContentMain from '@components/PostContentMain.astro'
 
 const { postsContent } = Astro.props
-// console.log(postsContent.thumbnail.src)
-// const imgSrc =
-//   'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png'
 ---
 
 <section class="container">
@@ -40,7 +38,7 @@ const { postsContent } = Astro.props
           <div class="headerContentSupportInfoTag">
             <ul class="headerContentSupportInfoTagList">
               {
-                postsContent.tag.map((item) => (
+                postsContent.tag.map((item: TagItem) => (
                   <li class="headerContentSupportInfoTagItem">
                     <a
                       href={`/tag/${item.slug}/`}
@@ -126,7 +124,6 @@ const { postsContent } = Astro.props
     </div> -->
     <!-- main -->
     <PostContentMain props={postsContent.content} />
-    <!-- <article class="bodyMain" set:html={postsContent.content} /> -->
     <!-- profile -->
     <div class="bodyProfile">
       <!-- editor -->
@@ -330,17 +327,9 @@ const { postsContent } = Astro.props
       margin-bottom: 1.5rem;
       font-size: 2.2rem;
     }
-    .headerContentSupport {
-      // flex-direction: column;
-    }
     .headerContentSupportInfo {
       grid-template-columns: auto;
       gap: 1rem;
-    }
-    .headerContentSupportInfoCategory {
-      // width: fit-content;
-    }
-    .headerContentSupportInfoTagList {
     }
     .bodyIntro {
       padding: 1.5rem;

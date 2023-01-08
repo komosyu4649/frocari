@@ -1,13 +1,10 @@
 ---
-import type { Post } from '@type'
 import Kv from './Kv.astro'
 import MainPost from './MainPost.astro'
 import Pagination from './Pagination.astro'
 import PopularPosts from './PopularPosts.astro'
 
 const { kvProps, pageProps, postsContents } = Astro.props
-// console.log(kvProps, postsContents)
-// console.log(page)
 ---
 
 <div class="container">
@@ -27,10 +24,8 @@ const { kvProps, pageProps, postsContents } = Astro.props
   }
   .list {
     display: grid;
-    // grid-template-columns: repeat((2, 44rem));
     grid-template-columns: repeat((2, 1fr));
     gap: 3rem;
-    // gap: 3rem 4rem;
   }
 
   @media screen and (max-width: var.$break-point-sp) {
@@ -39,7 +34,6 @@ const { kvProps, pageProps, postsContents } = Astro.props
     }
     .list {
       grid-template-columns: auto;
-      // gap: 2.5rem;
       gap: 2rem;
     }
   }

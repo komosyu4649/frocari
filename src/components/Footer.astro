@@ -1,18 +1,20 @@
 ---
 import { client } from '@lib/newt/client'
+import type { CategoryData, CategoryItem } from '@type/index'
 
-const categoryData = await client.getContents({
+const categoryData: CategoryData = await client.getContents({
   appUid: import.meta.env.PUBLIC_NEWT_APP_UID,
   modelUid: import.meta.env.PUBLIC_NEWT_MODEL_CATEGORY,
 })
-const categoryItems = categoryData.items
+
+const categoryItems: CategoryItem[] = categoryData.items
 ---
 
 <footer class="container">
   <nav class="menu">
     <ul class="menuList">
       {
-        categoryItems.map((categoryItem) => (
+        categoryItems.map((categoryItem: CategoryItem) => (
           <li class="menuItem">
             <a href={`/category/${categoryItem.slug}/`} class="menuItemLink">
               {categoryItem.name}
@@ -47,7 +49,6 @@ const categoryItems = categoryData.items
     justify-content: center;
   }
   .menuItem {
-    // &:last-child {
     &:first-child {
       .menuItemLink {
         &::before {

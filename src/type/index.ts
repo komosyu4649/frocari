@@ -1,4 +1,4 @@
-export type Post = {
+export type PostItem = {
   _id: string
   _sys: {
     raw: {
@@ -62,7 +62,53 @@ export type Post = {
   }[]
 }
 
-export type Category = {
+export type PostData = {
+  skip: number
+  limit: number
+  total: number
+  items: PostItem[]
+}
+
+export type CategoryData = {
+  skip: number
+  limit: number
+  total: number
+  items: {
+    _id: string
+    _sys: {
+      raw: {
+        createdAt: string
+        updatedAt: string
+        firstPublishedAt: string
+        publishedAt: string
+      }
+      customOrder: number
+      createdAt: string
+      updatedAt: string
+    }
+    name: string
+    slug: string
+  }[]
+}
+
+export type CategoryItem = {
+  _id: string
+  _sys: {
+    raw: {
+      createdAt: string
+      updatedAt: string
+      firstPublishedAt: string
+      publishedAt: string
+    }
+    customOrder: number
+    createdAt: string
+    updatedAt: string
+  }
+  name: string
+  slug: string
+}
+
+export type TagItem = {
   _id: string
   _sys: {
     raw: {

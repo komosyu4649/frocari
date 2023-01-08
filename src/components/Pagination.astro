@@ -1,21 +1,13 @@
 ---
 const { pageProps } = Astro.props
 const { page, pageType = null, pageSlug = null } = pageProps
-// console.log(page, pageType, pageSlug)
 
 const pageUrl = pageType ? `/${pageType}/${pageSlug}/` : '/'
-// console.log(pageUrl)
-
-const url = new URL(Astro.request.url)
 
 const totalPageNumber = Math.ceil(page.total / page.size)
 
 let currentPageNumber
-// if (!url.pathname.includes('page')) {
-//   currentPageNumber = 1
-// } else {
 currentPageNumber = page.currentPage
-// }s
 
 const paginationGenerator = (
   currentPageNumber: number,
@@ -25,7 +17,7 @@ const paginationGenerator = (
   const prev = currentPageNumber - width
   const next = currentPageNumber + width + 1
   const ranges = []
-  const rangeWidthDots: [...number[], string?] = []
+  const rangeWidthDots: [string?, ...number[]] = []
   let length: number
   for (let i = 1; i <= totalPageNumber; i += 1) {
     if (i === 1 || i === totalPageNumber || (i >= prev && i <= next)) {

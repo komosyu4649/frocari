@@ -1,13 +1,13 @@
 ---
-import dayjs from 'dayjs'
 import { Image } from '@astrojs/image/components'
-import type { Post } from '@/type'
+import dayjs from 'dayjs'
+import type { PostItem } from '@type/index'
+
 const { postsContents } = Astro.props
-// console.log(postsContents)
 ---
 
 {
-  postsContents.map((postsContent: Post) => (
+  postsContents.map((postsContent: PostItem) => (
     <li class="item">
       <a href={`/${postsContent.slug}/`} class="itemLink">
         <Image
@@ -129,14 +129,11 @@ const { postsContents } = Astro.props
     }
     .itemLinkContentInfoCategory {
       min-height: 2rem;
-      // padding: 0.15rem 1.15rem;
       padding: 0rem 1.25rem;
     }
     .itemLinkContentTitle {
-      // margin: 0.5rem 0 1rem;
       margin: 0.75rem 0 1rem;
       font-size: 1.6rem;
-      // font-size: 1.4rem;
       line-height: 1.5;
     }
   }
