@@ -1,12 +1,12 @@
 ---
 import { client } from '@lib/newt/client'
-import type { TagData, TagItem } from '@type/index'
+import type { KeywordData, KeywordItem } from '@type/index'
 
-const tagData: TagData = await client.getContents({
+const keywordData: KeywordData = await client.getContents({
   appUid: import.meta.env.PUBLIC_NEWT_APP_UID,
-  modelUid: import.meta.env.PUBLIC_NEWT_MODEL_TAG,
+  modelUid: import.meta.env.PUBLIC_NEWT_MODEL_Keyword,
 })
-const tagItems: TagItem[] = tagData.items
+const keywordItems: KeywordItem[] = keywordData.items
 ---
 
 <div class="container">
@@ -14,10 +14,10 @@ const tagItems: TagItem[] = tagData.items
   <div class="main">
     <ul class="mainList">
       {
-        tagItems.map((tagItem: TagItem) => (
+        keywordItems.map((keywordItem: KeywordItem) => (
           <li class="mainItem">
-            <a href={`/tag/${tagItem.slug}/`} class="mainItemLink">
-              {tagItem.name}
+            <a href={`/keyword/${keywordItem.slug}/`} class="mainItemLink">
+              {keywordItem.name}
             </a>
           </li>
         ))

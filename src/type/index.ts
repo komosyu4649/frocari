@@ -40,7 +40,7 @@ export type PostItem = {
     name: string
     slug: string
   }
-  tag: {
+  keyword: {
     _id: string
     _sys: any
     name: string
@@ -56,7 +56,7 @@ export type PostItem = {
     introduction: string
     content: string
     category: any
-    tag: any[]
+    keyword: any[]
     relation: any[]
     popular: boolean
   }[]
@@ -108,7 +108,7 @@ export type CategoryItem = {
   slug: string
 }
 
-export type TagData = {
+export type KeywordData = {
   skip: number
   limit: number
   total: number
@@ -120,7 +120,7 @@ export type TagData = {
   }[]
 }
 
-export type TagItem = {
+export type KeywordItem = {
   _id: string
   _sys: {
     raw?: {
@@ -169,7 +169,7 @@ export type RelationPost = {
     name: string
     slug: string
   }
-  tag: [{}]
+  keyword: [{}]
   relation: [{}]
   popular: boolean
 }

@@ -31,13 +31,13 @@ const { postsContents } = Astro.props
           </time>
         </div>
         <p class="itemLinkContentTitle">{postsContent.title}</p>
-        <div class="itemLinkContentTag">
-          <ul class="itemLinkContentTagList">
-            {postsContent.tag.map((item) => (
-              <li class="itemLinkContentTagItem">
+        <div class="itemLinkContentKeyword">
+          <ul class="itemLinkContentKeywordList">
+            {postsContent.keyword.map((item) => (
+              <li class="itemLinkContentKeywordItem">
                 <a
-                  href={`/tag/${item.slug}/`}
-                  class="itemLinkContentTagItemLink"
+                  href={`/keyword/${item.slug}/`}
+                  class="itemLinkContentKeywordItemLink"
                 >
                   {item.name}
                 </a>
@@ -99,13 +99,13 @@ const { postsContents } = Astro.props
     font-weight: bold;
     line-height: 1.5;
   }
-  .itemLinkContentTagList {
+  .itemLinkContentKeywordList {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     gap: 1.5rem;
   }
-  .itemLinkContentTagItemLink {
+  .itemLinkContentKeywordItemLink {
     position: relative;
     font-size: 1.2rem;
     background-image: linear-gradient(

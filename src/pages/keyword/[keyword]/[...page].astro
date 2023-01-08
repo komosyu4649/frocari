@@ -1,35 +1,35 @@
 ---
 import { client } from '@lib/newt/client'
 import type { GetStaticPathsOptions } from 'astro'
-import type { PostData, PostItem, TagData, TagItem } from '@type/index'
+import type { PostData, PostItem, KeywordData, KeywordItem } from '@type/index'
 import Layout from '@layouts/Layout.astro'
 import MainPosts from '@components/MainPosts.astro'
 import PopularPosts from '@components/PopularPosts.astro'
 import SideBar from '@components/SideBar.astro'
 
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
-  const keywordsData: TagData = await client.getContents({
+  const keywordsData: KeywordData = await client.getContents({
     appUid: import.meta.env.PUBLIC_NEWT_APP_UID,
-    modelUid: import.meta.env.PUBLIC_NEWT_MODEL_TAG,
+    modelUid: import.meta.env.PUBLIC_NEWT_MODEL_Keyword,
   })
-  const keywordsContents: TagItem[] = keywordsData.items
+  const keywordsContents: KeywordItem[] = keywordsData.items
 
   const postData: PostData = await client.getContents({
     appUid: import.meta.env.PUBLIC_NEWT_APP_UID,
     modelUid: import.meta.env.PUBLIC_NEWT_MODEL_POST,
   })
 
-  return keywordsContents.map((keywordsContent: TagItem) => {
+  return keywordsContents.map((keywordsContent: KeywordItem) => {
     const postsContents: PostItem[] = postData.items.filter(
       (postsContent: PostItem) => {
-        return postsContent.tag.some(
+        return postsContent.keyword.some(
           (item) => item.slug === keywordsContent.slug
         )
       }
     )
     return paginate(postsContents, {
       params: {
-        tag: keywordsContent.slug,
+        keyword: keywordsContent.slug,
       },
       props: { name: keywordsContent.name },
       pageSize: 10,
@@ -38,14 +38,14 @@ export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
 }
 
 const { page, name } = Astro.props
-const { tag } = Astro.params
+const { keyword } = Astro.params
 
 const kvTitleEn = 'keywords'
 const kvTitleJa = name
 const kvProps = { kvTitleEn, kvTitleJa }
 
-const pageType = 'tag'
-const pageSlug = tag
+const pageType = 'keyword'
+const pageSlug = keyword
 
 const pageProps = { page, pageType, pageSlug }
 ---

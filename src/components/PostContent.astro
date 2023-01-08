@@ -1,7 +1,7 @@
 ---
 import dayjs from 'dayjs'
 import { Image } from '@astrojs/image/components'
-import type { TagItem } from '@type/index'
+import type { KeywordItem } from '@type/index'
 import PostContentMain from '@components/PostContentMain.astro'
 
 const { postsContent } = Astro.props
@@ -34,15 +34,15 @@ const { postsContent } = Astro.props
             class="c-text__label headerContentSupportInfoCategory"
             >{postsContent.category.name}</a
           >
-          <!-- tag -->
-          <div class="headerContentSupportInfoTag">
-            <ul class="headerContentSupportInfoTagList">
+          <!-- keyword -->
+          <div class="headerContentSupportInfoKeyword">
+            <ul class="headerContentSupportInfoKeywordList">
               {
-                postsContent.tag.map((item: TagItem) => (
-                  <li class="headerContentSupportInfoTagItem">
+                postsContent.keyword.map((item: KeywordItem) => (
+                  <li class="headerContentSupportInfoKeywordItem">
                     <a
-                      href={`/tag/${item.slug}/`}
-                      class="c-text__tag headerContentSupportInfoTagItemLink"
+                      href={`/keyword/${item.slug}/`}
+                      class="c-text__keyword headerContentSupportInfoKeywordItemLink"
                     >
                       {item.name}
                     </a>
@@ -193,7 +193,7 @@ const { postsContent } = Astro.props
     align-items: center;
     gap: 2.5rem;
   }
-  .headerContentSupportInfoTagList {
+  .headerContentSupportInfoKeywordList {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
