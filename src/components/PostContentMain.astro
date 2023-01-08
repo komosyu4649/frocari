@@ -5,6 +5,8 @@ const { props } = Astro.props
 <article class="postContentMain" set:html={props} />
 
 <style lang="scss" is:global>
+  @use '../styles/variable' as var;
+
   .postContentMain {
     margin-top: 7rem;
     h2,
@@ -43,6 +45,35 @@ const { props } = Astro.props
     li {
       font-size: 1.6rem;
       line-height: 1.8;
+    }
+  }
+
+  @media screen and (max-width: var.$break-point-sp) {
+    .postContentMain {
+      margin-top: 4rem;
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        margin-bottom: 2rem;
+      }
+      p {
+        margin-top: 1.5rem;
+        font-size: 1.4rem;
+      }
+      img {
+        margin-top: 1.5rem;
+      }
+      ul {
+        margin: 1.5rem 1.5rem 0;
+      }
+      ol {
+        margin: 1.5rem 1.5rem 0;
+      }
+      li {
+        font-size: 1.4rem;
+      }
     }
   }
 </style>

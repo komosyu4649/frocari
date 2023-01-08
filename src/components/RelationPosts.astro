@@ -31,6 +31,8 @@ const { relationContents } = Astro.props
 </div>
 
 <style lang="scss">
+  @use '../styles/variable' as var;
+
   .container {
     margin-top: 8rem;
   }
@@ -67,5 +69,25 @@ const { relationContents } = Astro.props
     background-repeat: no-repeat;
     background-size: 100% 1px;
     background-position: 0 100%;
+  }
+
+  @media screen and (max-width: var.$break-point-sp) {
+    .container {
+      // margin-top: 6rem;
+    }
+    .title {
+      margin-bottom: 1.5rem;
+    }
+    .mainList {
+      grid-template-columns: auto;
+      gap: 1rem;
+    }
+    .mainItemLinkImg {
+      width: 10rem;
+      height: 10rem;
+    }
+    .mainItemLinkContentTitle {
+      font-size: 1.6rem;
+    }
   }
 </style>

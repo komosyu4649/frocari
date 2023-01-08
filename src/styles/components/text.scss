@@ -1,33 +1,48 @@
+@use '../variable.scss' as var;
+
 .c-text__label {
-    display: inline-block;
-    min-height: 2.5rem;
-    padding: 0.25rem 2.25rem;
-    font-size: 1.2rem;
-    border: 1px solid var(--color-black);
-    border-radius: 2rem;
+  display: inline-block;
+  width: fit-content;
+  min-height: 2.5rem;
+  padding: 0.25rem 2.25rem;
+  font-size: 1.2rem;
+  border: 1px solid var(--color-black);
+  border-radius: 2rem;
 }
 .c-text__tag {
-    font-size: 1.2rem;
-    background-image: linear-gradient(var(--color-text-black),var(--color-text-black));
-    background-repeat: no-repeat;
-    background-size: 100% 1px;
-    background-position: 0 100%;
+  font-size: 1.2rem;
+  background-image: linear-gradient(
+    var(--color-text-black),
+    var(--color-text-black)
+  );
+  background-repeat: no-repeat;
+  background-size: 100% 1px;
+  background-position: 0 100%;
 }
 .c-text__time {
-    font-size: 1.2rem;
-    font-family: "Urbanist",sans-serif;
+  font-size: 1.2rem;
+  font-family: 'Urbanist', sans-serif;
 }
 .c-text__default {
-    font-size: 1.6rem;
-    line-height: 1.8;
+  font-size: 1.6rem;
+  line-height: 1.8;
 }
 .c-text__sm {
-    font-size: 1.4rem;
-    line-height: 1.8;
+  font-size: 1.4rem;
+  line-height: 1.8;
 }
 .c-text__link {
-    background-image: linear-gradient(var(--color-text-black),var(--color-text-black));
-    background-repeat: no-repeat;
-    background-size: 100% 1px;
-    background-position: 0 100%;
+  background-image: linear-gradient(
+    var(--color-text-black),
+    var(--color-text-black)
+  );
+  background-repeat: no-repeat;
+  background-size: 100% 1px;
+  background-position: 0 100%;
+}
+
+@media screen and (max-width: var.$break-point-sp) {
+  .c-text__default {
+    font-size: 1.4rem;
+  }
 }

@@ -26,35 +26,38 @@ const { postsContent } = Astro.props
       <h1 class="headerContentTitle">
         {postsContent.title}
       </h1>
-      <!-- info -->
-      <div class="headerContentInfo">
-        <!-- category -->
-        <a
-          href={`/category/${postsContent.category.slug}/`}
-          class="c-text__label headerContentInfoCategory"
-          >{postsContent.category.name}</a
-        >
-        <!-- tag -->
-        <div class="headerContentInfoTag">
-          <ul class="headerContentInfoTagList">
-            {
-              postsContent.tag.map((item) => (
-                <li class="headerContentInfoTagItem">
-                  <a
-                    href={`/tag/${item.slug}/`}
-                    class="c-text__tag headerContentInfoTagItemLink"
-                  >
-                    {item.name}
-                  </a>
-                </li>
-              ))
-            }
-          </ul>
+      <!-- support -->
+      <div class="headerContentSupport">
+        <!-- info -->
+        <div class="headerContentSupportInfo">
+          <!-- category -->
+          <a
+            href={`/category/${postsContent.category.slug}/`}
+            class="c-text__label headerContentSupportInfoCategory"
+            >{postsContent.category.name}</a
+          >
+          <!-- tag -->
+          <div class="headerContentSupportInfoTag">
+            <ul class="headerContentSupportInfoTagList">
+              {
+                postsContent.tag.map((item) => (
+                  <li class="headerContentSupportInfoTagItem">
+                    <a
+                      href={`/tag/${item.slug}/`}
+                      class="c-text__tag headerContentSupportInfoTagItemLink"
+                    >
+                      {item.name}
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
         </div>
         <!-- date -->
         <time
           datetime={postsContent.date}
-          class="c-text__time headerContentInfoDate"
+          class="c-text__time headerContentSupportDate"
         >
           {dayjs(postsContent.date).format('YYYY.MM.DD')}
         </time>
@@ -153,6 +156,8 @@ const { postsContent } = Astro.props
 </section>
 
 <style lang="scss">
+  @use '../styles/variable' as var;
+
   .container {
     margin-top: 8rem;
     padding: 6rem 5.5rem;
@@ -180,16 +185,22 @@ const { postsContent } = Astro.props
     font-weight: bold;
     line-height: 1.5;
   }
-  .headerContentInfo {
+  .headerContentSupport {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .headerContentSupportInfo {
     display: grid;
     grid-template-columns: auto 1fr auto;
     align-items: center;
     gap: 2.5rem;
   }
-  .headerContentInfoTagList {
+  .headerContentSupportInfoTagList {
     display: flex;
     flex-direction: row;
-    gap: 1.5rem;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
   }
   .bodyIntro {
     padding: 3rem;
@@ -298,5 +309,45 @@ const { postsContent } = Astro.props
   }
   .bodyProfileDescription {
     margin-top: 1rem;
+  }
+
+  @media screen and (max-width: var.$break-point-sp) {
+    .container {
+      margin-top: 5rem;
+      padding: 4rem 2rem;
+    }
+    .header {
+      grid-template-columns: auto;
+      margin-bottom: 3.5rem;
+      padding-bottom: 3.5rem;
+    }
+    .headerThumbnail {
+      width: 20rem;
+      height: 20rem;
+      margin: 0 auto;
+    }
+    .headerContentTitle {
+      margin-bottom: 1.5rem;
+      font-size: 2.2rem;
+    }
+    .headerContentSupport {
+      // flex-direction: column;
+    }
+    .headerContentSupportInfo {
+      grid-template-columns: auto;
+      gap: 1rem;
+    }
+    .headerContentSupportInfoCategory {
+      // width: fit-content;
+    }
+    .headerContentSupportInfoTagList {
+    }
+    .bodyIntro {
+      padding: 1.5rem;
+    }
+    .bodyProfile {
+      margin-top: 3rem;
+      padding: 2rem;
+    }
   }
 </style>
