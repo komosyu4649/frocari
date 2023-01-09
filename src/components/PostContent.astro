@@ -1,10 +1,36 @@
 ---
 import dayjs from 'dayjs'
+import cheerio from 'cheerio'
 import { Image } from '@astrojs/image/components'
 import type { KeywordItem } from '@type/index'
 import PostContentMain from '@components/PostContentMain.astro'
 
 const { postsContent } = Astro.props
+
+const $ = cheerio.load(postsContent.content)
+$('h1, h2, h3').each((i, elem) => {
+  $(elem).attr('id', `title-${i}`)
+})
+
+const modifiedHtml = $.html()
+
+const headings = $('h1, h2, h3').toArray()
+
+const toc = headings.map((data) => {
+  let text = ''
+  data.children.forEach((child) => {
+    if (child.type === 'text') {
+      text += child.data
+    }
+  })
+  return {
+    text: text,
+    id: data.attribs.id,
+    name: data.name,
+  }
+})
+
+console.log(toc)
 ---
 
 <section class="container">
@@ -71,59 +97,27 @@ const { postsContent } = Astro.props
       </p>
     </div>
     <!-- toc -->
-    <!-- <div class="bodyToc">
+    <div class="bodyToc">
       <p class="c-title__md bodyTocTitle">目次</p>
       <div class="bodyTocMain">
         <ul class="bodyTocMainList">
-          <li class="bodyTocMainItem">
-            <a href="/" class="c-text__link bodyTocMainItemLink"
-              >ここにタイトルが入ります</a
-            >
-            <ul class="bodyTocMainItemList">
-              <li class="bodyTocMainItemItem">
-                <a href="/" class="c-text__link bodyTocMainItemItemLink"
-                  >ここにタイトルが入ります</a
+          {
+            toc.map((data) => (
+              <li class={`bodyTocMainItem ${data.name}`}>
+                <a
+                  href={`#${data.id}`}
+                  class="c-text__link bodyTocMainItemLink"
                 >
+                  {data.text}
+                </a>
               </li>
-              <li class="bodyTocMainItemItem">
-                <a href="/" class="c-text__link bodyTocMainItemItemLink"
-                  >ここにタイトルが入ります</a
-                >
-              </li>
-              <li class="bodyTocMainItemItem">
-                <a href="/" class="c-text__link bodyTocMainItemItemLink"
-                  >ここにタイトルが入ります</a
-                >
-              </li>
-            </ul>
-          </li>
-          <li class="bodyTocMainItem">
-            <a href="/" class="c-text__link bodyTocMainItemLink"
-              >ここにタイトルが入ります</a
-            >
-            <ul class="bodyTocMainItemList">
-              <li class="bodyTocMainItemItem">
-                <a href="/" class="c-text__link bodyTocMainItemItemLink"
-                  >ここにタイトルが入ります</a
-                >
-              </li>
-              <li class="bodyTocMainItemItem">
-                <a href="/" class="c-text__link bodyTocMainItemItemLink"
-                  >ここにタイトルが入ります</a
-                >
-              </li>
-              <li class="bodyTocMainItemItem">
-                <a href="/" class="c-text__link bodyTocMainItemItemLink"
-                  >ここにタイトルが入ります</a
-                >
-              </li>
-            </ul>
-          </li>
+            ))
+          }
         </ul>
       </div>
-    </div> -->
+    </div>
     <!-- main -->
-    <PostContentMain props={postsContent.content} />
+    <PostContentMain props={modifiedHtml} />
     <!-- profile -->
     <div class="bodyProfile">
       <!-- editor -->
@@ -222,6 +216,20 @@ const { postsContent } = Astro.props
   }
   .bodyTocMainItem {
     list-style-type: disc;
+  }
+  .bodyTocMainItem.h2 {
+  }
+  .bodyTocMainItem.h3 {
+    margin: 0 1rem;
+  }
+  .bodyTocMainItem.h4 {
+    margin: 0 2rem;
+  }
+  .bodyTocMainItem.h5 {
+    margin: 0 3rem;
+  }
+  .bodyTocMainItem.h6 {
+    margin: 0 4rem;
   }
   .bodyTocMainItemLink {
     font-size: 1.4rem;
@@ -332,7 +340,13 @@ const { postsContent } = Astro.props
       gap: 1rem;
     }
     .bodyIntro {
-      padding: 1.5rem;
+      padding: 2rem;
+    }
+    .bodyToc {
+      padding: 2rem;
+    }
+    .bodyTocMain {
+      margin: 1rem 1.5rem 0;
     }
     .bodyProfile {
       margin-top: 4rem;

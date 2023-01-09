@@ -4,6 +4,8 @@ const { page, pageType = null, pageSlug = null } = pageProps
 
 const pageUrl = pageType ? `/${pageType}/${pageSlug}/` : '/'
 
+const url = new URL(Astro.request.url)
+
 const totalPageNumber = Math.ceil(page.total / page.size)
 
 let currentPageNumber
