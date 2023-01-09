@@ -9,12 +9,16 @@ const { postsContents } = Astro.props
 {
   postsContents.map((postsContent: PostItem) => (
     <li class="item">
-      <a href={`/${postsContent.slug}/`} class="itemLink">
+      <a
+        href={`/${postsContent.slug}/`}
+        class="itemLink"
+        aria-label={postsContent.title}
+      >
         <Image
           src={postsContent.thumbnail.src}
           alt={postsContent.thumbnail.altText}
-          width={postsContent.thumbnail.width}
-          height={postsContent.thumbnail.height}
+          width={1000}
+          height={1000}
           class="itemLinkImg"
         />
       </a>
