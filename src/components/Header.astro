@@ -1,8 +1,8 @@
 ---
 import { client } from '@lib/newt/client'
 import type { CategoryData, CategoryItem } from '@type/index'
-import SideBarSearch from './SideBarSearch.astro'
-import SideBarKeywords from './SideBarKeywords.astro'
+import Search from './Search.astro'
+import Keywords from './Keywords.astro'
 
 const categoryData: CategoryData = await client.getContents({
   appUid: import.meta.env.PUBLIC_NEWT_APP_UID,
@@ -59,8 +59,8 @@ const categoryItems: CategoryItem[] = categoryData.items
         </nav>
         <!-- sub -->
         <div class="menuSub">
-          <!-- <SideBarSearch /> -->
-          <SideBarKeywords />
+          <!-- <Search /> -->
+          <Keywords />
         </div>
       </div>
     </div>

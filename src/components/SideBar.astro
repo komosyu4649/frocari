@@ -1,17 +1,17 @@
 ---
 import Breadcrumb from './Breadcrumb.astro'
-import SideBarKeywords from './SideBarKeywords.astro'
-import SideBarSearch from './SideBarSearch.astro'
-import SidebarBanner from './SidebarBanner.astro'
+import Keywords from './Keywords.astro'
+import Search from './Search.astro'
+import Banner from './Banner.astro'
 
 const { breadcrumbItems } = Astro.props
 ---
 
 <section class="container">
   {breadcrumbItems && <Breadcrumb breadcrumbItems={breadcrumbItems} />}
-  <!-- <SideBarSearch /> -->
-  <SideBarKeywords />
-  <SidebarBanner />
+  <!-- <Search /> -->
+  <Keywords />
+  <Banner />
 </section>
 
 <style lang="scss">
