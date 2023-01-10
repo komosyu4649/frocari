@@ -4,6 +4,7 @@ import Layout from '@layouts/Layout.astro'
 import SideBar from '@components/SideBar.astro'
 import PostContent from '@components/PostContent.astro'
 import RelationPosts from '@components/RelationPosts.astro'
+import ScrollToTopButton from '@components/ScrollToTopButton.astro'
 import type { PostData, PostItem } from '@type/index'
 
 export async function getStaticPaths() {
@@ -52,6 +53,7 @@ const breadcrumbItems = [
       <RelationPosts relationContents={relationContents} />
     </div>
     <SideBar breadcrumbItems={breadcrumbItems} />
+    <ScrollToTopButton />
   </main>
 </Layout>
 
@@ -69,6 +71,7 @@ const breadcrumbItems = [
   @media screen and (max-width: var.$break-point-sp) {
     .container {
       grid-template-columns: auto;
+      gap: 0;
       width: 34rem;
       margin: 0 auto;
     }

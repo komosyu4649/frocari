@@ -1,0 +1,53 @@
+---
+---
+
+<a href="#body" class="container">
+  <svg
+    width="16"
+    height="21"
+    viewBox="0 0 16 21"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    class="inside"
+  >
+    <path
+      d="M8.70711 0.292893C8.31658 -0.0976311 7.68342 -0.0976311 7.29289 0.292893L0.928932 6.65685C0.538408 7.04738 0.538408 7.68054 0.928932 8.07107C1.31946 8.46159 1.95262 8.46159 2.34315 8.07107L8 2.41421L13.6569 8.07107C14.0474 8.46159 14.6805 8.46159 15.0711 8.07107C15.4616 7.68054 15.4616 7.04738 15.0711 6.65685L8.70711 0.292893ZM9 21L9 1H7L7 21H9Z"
+      fill="white"></path>
+  </svg>
+</a>
+
+<style lang="scss">
+  @use '../styles/variable' as var;
+
+  .container {
+    position: fixed;
+    bottom: 6rem;
+    right: 8.75rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 6rem;
+    height: 6rem;
+    border-radius: 2rem;
+    background-color: var(--color-black);
+    z-index: 1;
+  }
+  .inside {
+    width: 100%;
+    height: 1.75rem;
+  }
+
+  @media screen and (max-width: var.$break-point-sp) {
+    .container {
+      position: static;
+      margin: 2.25rem auto 0;
+      //   width: 12.5rem;
+      width: 100%;
+      height: 5rem;
+      border-radius: 1.75rem;
+    }
+    .inside {
+      height: 1.5rem;
+    }
+  }
+</style>
