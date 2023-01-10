@@ -48,6 +48,17 @@ const pageType = 'keyword'
 const pageSlug = keyword
 
 const pageProps = { page, pageType, pageSlug }
+
+const breadcrumbItems = [
+  {
+    name: 'ホーム',
+    href: '/',
+  },
+  {
+    name: name,
+    href: `/${pageSlug}/`,
+  },
+]
 ---
 
 <Layout title="keywords">
@@ -60,7 +71,7 @@ const pageProps = { page, pageType, pageSlug }
       />
       <PopularPosts />
     </div>
-    <SideBar />
+    <SideBar breadcrumbItems={breadcrumbItems} />
   </main>
 </Layout>
 

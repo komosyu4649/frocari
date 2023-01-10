@@ -49,6 +49,17 @@ const pageType = 'category'
 const pageSlug = category
 
 const pageProps = { page, pageType, pageSlug }
+
+const breadcrumbItems = [
+  {
+    name: 'ホーム',
+    href: '/',
+  },
+  {
+    name: name,
+    href: `/${pageSlug}/`,
+  },
+]
 ---
 
 <Layout title="category">
@@ -61,7 +72,7 @@ const pageProps = { page, pageType, pageSlug }
       />
       <PopularPosts />
     </div>
-    <SideBar />
+    <SideBar breadcrumbItems={breadcrumbItems} />
   </main>
 </Layout>
 
