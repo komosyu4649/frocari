@@ -14,14 +14,28 @@ const { props } = Astro.props
     h4,
     h5,
     h6 {
-      padding: 2.5rem 0;
-      // margin: 5rem 0 2.5rem;
       font-weight: bold;
     }
     h2 {
+      position: relative;
+      margin-bottom: 3rem;
+      padding: 3.5rem 0 1.5rem;
       font-size: 2.4rem;
+      // border-bottom: 3px solid var(--color-black);
+      &::before {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        content: '';
+        width: 100%;
+        height: 3px;
+        background-color: var(--color-black);
+        border-radius: 5rem;
+        // opacity: 0.2;
+      }
     }
     h3 {
+      padding: 2.5rem 0 2.5rem;
       font-size: 2.2rem;
     }
     h4 {
