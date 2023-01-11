@@ -1,0 +1,46 @@
+---
+---
+
+<section class="container">
+  <h1 class="title">404 page not found</h1>
+  <p class="description">お探しのページは見つかりませんでした</p>
+  <a href="/" class="c-text__link link"> back to home</a>
+</section>
+
+<style lang="scss">
+  @use '../styles/variable' as var;
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 14rem 0 6rem;
+  }
+  .title {
+    margin-bottom: 3rem;
+    font-size: 7.2rem;
+    font-family: 'Urbanist', sans-serif;
+  }
+  .description {
+    font-size: 1.6rem;
+  }
+  .link {
+    margin-top: 8rem;
+    font-size: 2rem;
+    font-family: 'Urbanist', sans-serif;
+  }
+
+  @media screen and (max-width: var.$break-point-sp) {
+    .title {
+      margin-bottom: 1.5rem;
+      font-size: 3.6rem;
+    }
+    .description {
+      font-size: 1.4rem;
+    }
+    .link {
+      margin-top: 4rem;
+      font-size: 1.8rem;
+    }
+  }
+</style>
