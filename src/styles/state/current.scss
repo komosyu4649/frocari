@@ -1,0 +1,6 @@
+.is-current {
+  pointer-events: none;
+}
+.is-current.c-text__link {
+  background-image: unset;
+}

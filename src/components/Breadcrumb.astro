@@ -9,7 +9,10 @@ const { breadcrumbItems } = Astro.props
     {
       breadcrumbItems.map((item: Breadcrumb) => (
         <li class="item">
-          <a href={item.href} class="c-text__link itemLink">
+          <a
+            href={item.href}
+            class="js-check__current-link c-text__link itemLink"
+          >
             {item.name}
           </a>
         </li>

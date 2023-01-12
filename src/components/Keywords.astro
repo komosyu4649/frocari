@@ -16,7 +16,10 @@ const keywordItems: KeywordItem[] = keywordData.items
       {
         keywordItems.map((keywordItem: KeywordItem) => (
           <li class="mainItem">
-            <a href={`/keyword/${keywordItem.slug}/`} class="mainItemLink">
+            <a
+              href={`/keyword/${keywordItem.slug}/`}
+              class="js-check__current-link c-text__link mainItemLink"
+            >
               #{keywordItem.name}
             </a>
           </li>
@@ -48,13 +51,13 @@ const keywordItems: KeywordItem[] = keywordData.items
   }
   .mainItemLink {
     font-size: 1.2rem;
-    background-image: linear-gradient(
-      var(--color-text-black),
-      var(--color-text-black)
-    );
-    background-repeat: no-repeat;
-    background-size: 100% 1px;
-    background-position: 0 100%;
+    // background-image: linear-gradient(
+    //   var(--color-text-black),
+    //   var(--color-text-black)
+    // );
+    // background-repeat: no-repeat;
+    // background-size: 100% 1px;
+    // background-position: 0 100%;
   }
 
   @media screen and (max-width: var.$break-point-sp) {
