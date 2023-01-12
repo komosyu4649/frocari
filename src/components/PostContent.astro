@@ -29,22 +29,19 @@ const toc = headings.map((data) => {
     name: data.name,
   }
 })
+
+console.log(
+  decodeURIComponent(postsContent.thumbnail.src),
+  encodeURIComponent(postsContent.thumbnail.src)
+)
 ---
 
 <section class="container">
   <!-- header -->
   <div class="header">
     <!-- thumbnail -->
-    <!-- なぜかビルドできないので、ふつうのimgタグにした -->
-    <!-- <Image
-      src={postsContent.thumbnail.src}
-      alt={postsContent.thumbnail.altText}
-      width={postsContent.thumbnail.width}
-      height={postsContent.thumbnail.height}
-      class="headerThumbnail"
-    /> -->
-    <img
-      src={postsContent.thumbnail.src}
+    <Image
+      src={decodeURIComponent(postsContent.thumbnail.src)}
       alt={postsContent.thumbnail.altText}
       width={postsContent.thumbnail.width}
       height={postsContent.thumbnail.height}
