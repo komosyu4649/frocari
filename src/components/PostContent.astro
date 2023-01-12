@@ -35,7 +35,15 @@ const toc = headings.map((data) => {
   <!-- header -->
   <div class="header">
     <!-- thumbnail -->
-    <Image
+    <!-- なぜかビルドできないので、ふつうのimgタグにした -->
+    <!-- <Image
+      src={postsContent.thumbnail.src}
+      alt={postsContent.thumbnail.altText}
+      width={postsContent.thumbnail.width}
+      height={postsContent.thumbnail.height}
+      class="headerThumbnail"
+    /> -->
+    <img
       src={postsContent.thumbnail.src}
       alt={postsContent.thumbnail.altText}
       width={postsContent.thumbnail.width}

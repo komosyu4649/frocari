@@ -1,5 +1,7 @@
 export default class CheckCurrentLink {
-  constructor() {}
+  constructor() {
+    this.targets = null
+  }
 
   init() {
     this.setSelector()
@@ -14,7 +16,6 @@ export default class CheckCurrentLink {
 
   checkCUrrentLink(i) {
     if (window.location.pathname === this.targets[i].getAttribute('href')) {
-      console.log(this.targets[i])
       this.targets[i].classList.add('is-current')
     }
   }
