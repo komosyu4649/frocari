@@ -4,3 +4,7 @@
 .is-current.c-text__link {
   background-image: unset;
 }
+.is-current.c-text__label {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
