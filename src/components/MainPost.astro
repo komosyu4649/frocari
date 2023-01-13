@@ -26,7 +26,7 @@ const { postsContents } = Astro.props
         <div class="itemLinkContentInfo">
           <a
             href={`/category/${postsContent.category.slug}/`}
-            class="itemLinkContentInfoCategory"
+            class="c-text__label itemLinkContentInfoCategory"
           >
             {postsContent.category.name}
           </a>
@@ -62,6 +62,14 @@ const { postsContents } = Astro.props
     display: grid;
     grid-template-columns: auto 1fr;
     gap: 2rem;
+    &:hover {
+      .itemLinkContentTitle {
+        background-image: linear-gradient(
+          var(--color-text-black),
+          var(--color-text-black)
+        );
+      }
+    }
   }
   .itemLink {
     &::before {
@@ -83,25 +91,39 @@ const { postsContents } = Astro.props
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 1rem;
   }
   .itemLinkContentInfoTime {
     font-size: 1.2rem;
     font-family: 'Urbanist', sans-serif;
   }
   .itemLinkContentInfoCategory {
-    display: inline-block;
-    min-height: 2.5rem;
-    padding: 0.25rem 2.25rem;
-    font-size: 1.2rem;
-    border: 1px solid var(--color-black);
-    border-radius: 2rem;
+    // display: inline-block;
+    // min-height: 2.5rem;
+    // padding: 0.25rem 2.25rem;
+    // font-size: 1.2rem;
+    // border: 1px solid var(--color-black);
+    // border-radius: 2rem;
     z-index: 1;
+    // &:hover {
+    //   background-color: var(--color-black);
+    //   color: var(--color-white);
+    // }
   }
   .itemLinkContentTitle {
-    margin: 1rem 0 1.5rem;
+    display: inline;
+    // margin: 1rem 0 1.5rem;
     font-size: 1.8rem;
     font-weight: bold;
     line-height: 1.5;
+    background-image: unset;
+    background-repeat: no-repeat;
+    // background-size: 100% 2px;
+    background-size: 100% 1px;
+    background-position: 0 100%;
+  }
+  .itemLinkContentKeyword {
+    margin-top: 1.5rem;
   }
   .itemLinkContentKeywordList {
     display: flex;
@@ -131,14 +153,20 @@ const { postsContents } = Astro.props
       height: 10rem;
       border-radius: 3rem;
     }
+    .itemLinkContentInfo {
+      margin-bottom: 0.75rem;
+    }
     .itemLinkContentInfoCategory {
       min-height: 2rem;
       padding: 0rem 1.25rem;
     }
     .itemLinkContentTitle {
-      margin: 0.75rem 0 1rem;
+      // margin: 0.75rem 0 1rem;
       font-size: 1.6rem;
       line-height: 1.5;
+    }
+    .itemLinkContentKeyword {
+      margin-top: 1rem;
     }
   }
 </style>

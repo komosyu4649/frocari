@@ -64,6 +64,11 @@ const postsContents: PostItem[] = postsData.items
     grid-template-columns: auto 1fr;
     align-items: center;
     gap: 1.5rem;
+    &:hover {
+      .mainItemLinkContentTitle {
+        background-image: unset;
+      }
+    }
   }
   .mainItemLinkImg {
     width: 9rem;
@@ -74,12 +79,14 @@ const postsContents: PostItem[] = postsData.items
     display: inline;
     font-size: 1.4rem;
     font-weight: bold;
-    line-height: 1.5rem;
+    line-height: 1.5;
+    // line-height: 1.8;
     background-image: linear-gradient(
       var(--color-text-black),
       var(--color-text-black)
     );
     background-repeat: no-repeat;
+    // background-size: 100% 1px;
     background-size: 100% 1px;
     background-position: 0 100%;
   }

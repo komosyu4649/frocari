@@ -41,7 +41,7 @@ const categoryItems: CategoryItem[] = categoryData.items
                 <li class="menuMainItem">
                   <a
                     href={`/category/${categoryItem.slug}/`}
-                    class="menuMainItemLink"
+                    class="js-check__current-link menuMainItemLink"
                   >
                     <span class="menuMainItemLinkEn">{categoryItem.slug}</span>
                     <span class="menuMainItemLinkJa">{categoryItem.name}</span>
@@ -50,7 +50,7 @@ const categoryItems: CategoryItem[] = categoryData.items
               ))
             }
             <li class="menuMainItem">
-              <a href="/about/" class="menuMainItemLink">
+              <a href="/about/" class="js-check__current-link menuMainItemLink">
                 <span class="menuMainItemLinkEn">about</span>
                 <span class="menuMainItemLinkJa">frocariについて</span>
               </a>
@@ -95,6 +95,12 @@ const categoryItems: CategoryItem[] = categoryData.items
   .menuMainItemLink {
     display: inline-block;
     padding: 2rem;
+    &:hover {
+      .menuMainItemLinkJa {
+        color: var(--color-white);
+        background-color: var(--color-black);
+      }
+    }
   }
   .menuMainItemLinkEn {
     display: none;
@@ -104,6 +110,28 @@ const categoryItems: CategoryItem[] = categoryData.items
   }
   .menuSub {
     display: none;
+  }
+
+  .is-current {
+    .menuMainItemLinkJa {
+      color: var(--color-white);
+      background-color: var(--color-black);
+      // position: relative;
+      // &::before {
+      //   position: absolute;
+      //   // top: -0.35rem;
+      //   // left: -0.35rem;
+      //   top: 50%;
+      //   left: 0;
+      //   content: '';
+      //   // width: 0.5rem;
+      //   // height: 0.5rem;
+      //   width: 100%;
+      //   height: 1px;
+      //   // background-color: var(--color-white);
+      //   background-color: var(--color-black);
+      // }
+    }
   }
 
   @media screen and (max-width: var.$break-point-sp) {
@@ -186,6 +214,13 @@ const categoryItems: CategoryItem[] = categoryData.items
       }
       .spMenuTriggerInside {
         color: var(--color-black);
+      }
+    }
+
+    .is-current {
+      .menuMainItemLinkJa {
+        color: var(--color-black);
+        background-color: var(--color-white);
       }
     }
   }

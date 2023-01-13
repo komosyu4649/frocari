@@ -16,14 +16,19 @@ const categoryItems: CategoryItem[] = categoryData.items
       {
         categoryItems.map((categoryItem: CategoryItem) => (
           <li class="menuItem">
-            <a href={`/category/${categoryItem.slug}/`} class="menuItemLink">
-              {categoryItem.name}
+            <a
+              href={`/category/${categoryItem.slug}/`}
+              class="js-check__current-link menuItemLink"
+            >
+              <span class="menuItemLinkInside">{categoryItem.name}</span>
             </a>
           </li>
         ))
       }
       <li class="menuItem">
-        <a href="/about/" class="menuItemLink"> frocariについて</a>
+        <a href="/about/" class="js-check__current-link menuItemLink">
+          <span class="menuItemLinkInside"> frocariについて</span>
+        </a>
       </li>
     </ul>
   </nav>
@@ -71,10 +76,23 @@ const categoryItems: CategoryItem[] = categoryData.items
       height: 1.5rem;
       background-color: var(--color-text-black);
     }
+    &:hover {
+      .menuItemLinkInside {
+        color: var(--color-white);
+        background-color: var(--color-black);
+      }
+    }
   }
   .copy {
     font-size: 1.2rem;
     font-family: 'Urbanist', sans-serif;
+  }
+
+  .is-current {
+    .menuItemLinkInside {
+      color: var(--color-white);
+      background-color: var(--color-black);
+    }
   }
 
   @media screen and (max-width: var.$break-point-sp) {

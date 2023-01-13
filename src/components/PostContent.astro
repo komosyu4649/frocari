@@ -30,10 +30,9 @@ const toc = headings.map((data) => {
   }
 })
 
-console.log(
-  decodeURIComponent(postsContent.thumbnail.src),
-  encodeURIComponent(postsContent.thumbnail.src)
-)
+// console.log(1, postsContent.thumbnail.src) // 生
+// console.log(2, decodeURIComponent(postsContent.thumbnail.src)) // decode
+// console.log(3, encodeURIComponent(postsContent.thumbnail.src)) // encode
 ---
 
 <section class="container">
@@ -71,7 +70,7 @@ console.log(
                   <li class="headerContentSupportInfoKeywordItem">
                     <a
                       href={`/keyword/${item.slug}/`}
-                      class="c-text__keyword headerContentSupportInfoKeywordItemLink"
+                      class="c-text__link c-text__keyword headerContentSupportInfoKeywordItemLink"
                     >
                       #{item.name}
                     </a>
