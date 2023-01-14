@@ -60,9 +60,12 @@ const breadcrumbItems = [
     href: `/category/${pageSlug}/`,
   },
 ]
+
+const metaTitle = `${name} | `
+const metaProps = { metaTitle }
 ---
 
-<Layout title="category">
+<Layout metaProps={metaProps}>
   <main class="container">
     <div class="main">
       <MainPosts

@@ -17,9 +17,13 @@ const breadcrumbItems = [
     href: '/about/',
   },
 ]
+
+const metaTitle = `frocariについて | `
+const metaDescription = 'frocari運営者のkomosyuに関する情報'
+const metaProps = { metaTitle, metaDescription }
 ---
 
-<Layout title="about">
+<Layout metaProps={metaProps}>
   <main class="container">
     <div class="main">
       <AboutMain kvProps={kvProps} />
