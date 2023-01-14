@@ -17,6 +17,11 @@ export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
   return paginate(postsContents, { pageSize: 10 })
 }
 
+const metaTitle = null
+const metaDescription =
+  'Web制作会社から事業会社のフロントエンジニアに転職に成功したので、その経験を中心にキャリアについて発信するメディアです'
+const metaProps = { metaTitle, metaDescription }
+
 const kvTitleEn = 'all'
 const kvTitleJa = 'すべての記事'
 const kvProps = { kvTitleEn, kvTitleJa }
@@ -26,7 +31,7 @@ const { page } = Astro.props
 const pageProps = { page }
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout metaProps={metaProps}>
   <main class="container">
     <div class="main">
       <MainPosts

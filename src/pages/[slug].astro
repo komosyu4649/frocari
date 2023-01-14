@@ -44,9 +44,13 @@ const breadcrumbItems = [
     href: `/${postsContent.slug}/`,
   },
 ]
+
+const metaTitle = `${postsContent.title} |`
+const metaDescription = postsContent.introduction
+const metaProps = { metaTitle, metaDescription }
 ---
 
-<Layout title={}>
+<Layout metaProps={metaProps}>
   <main class="container">
     <div class="main">
       <PostContent postsContent={postsContent} />

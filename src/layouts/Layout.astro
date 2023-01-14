@@ -8,7 +8,7 @@ import Footer from '@components/Footer.astro'
 //   title: string
 // }
 
-const { title } = Astro.props
+const { metaProps } = Astro.props
 ---
 
 <!DOCTYPE html>
@@ -18,8 +18,8 @@ const { title } = Astro.props
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="description" content="description" />
-    <title>{title}</title>
+    <meta name="description" content={metaProps?.metaDescription} />
+    <title>{metaProps?.metaTitle} frocari</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -27,15 +27,15 @@ const { title } = Astro.props
       rel="stylesheet"
     />
   </head>
+
   <body id="body">
     <Header />
     <slot />
     <Footer />
+    <style is:global>
+      @import url('https://fonts.googleapis.com/css2?family=Urbanist&display=swap');
+    </style>
+
+    <script src="../js/index.js"></script>
   </body>
 </html>
-
-<style is:global>
-  @import url('https://fonts.googleapis.com/css2?family=Urbanist&display=swap');
-</style>
-
-<script src="../js/index.js"></script>
