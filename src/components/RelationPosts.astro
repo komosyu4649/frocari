@@ -15,7 +15,7 @@ const { relationContents } = Astro.props
             <li class="mainItem">
               <a href={`/${relationContent.slug}/`} class="mainItemLink">
                 <Image
-                  src={relationContent.thumbnail.src}
+                  src={decodeURIComponent(relationContent.thumbnail.src)}
                   alt={relationContent.thumbnail.altText}
                   width={relationContent.thumbnail.width}
                   height={relationContent.thumbnail.height}
