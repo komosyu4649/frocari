@@ -6,8 +6,9 @@ import type { KeywordItem } from '@type/index'
 import PostContentMain from '@components/PostContentMain.astro'
 
 const { postsContent } = Astro.props
+// console.log(postsContent)
 
-const $ = cheerio.load(postsContent.content)
+const $ = cheerio.load(postsContent.main)
 $('h1, h2, h3').each((i, elem) => {
   $(elem).attr('id', `title-${i}`)
 })
