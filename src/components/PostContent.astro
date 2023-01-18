@@ -19,7 +19,6 @@ const headings = $('h1, h2, h3, h4, h5, h6').toArray()
 const toc = headings.map((data) => {
   let text = ''
   data.children.forEach((child) => {
-    console.log(child)
     if (child.type === 'text') {
       text += child.data
     }
@@ -30,7 +29,6 @@ const toc = headings.map((data) => {
     name: data.name,
   }
 })
-// console.log(toc)
 ---
 
 <section class="container">
