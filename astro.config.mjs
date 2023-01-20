@@ -14,6 +14,8 @@ import sitemap from '@astrojs/sitemap';
 import react from "@astrojs/react";
 
 // https://astro.build/config
+
+// https://astro.build/config
 export default defineConfig({
   // integrations: [image()]
   integrations: [image({
