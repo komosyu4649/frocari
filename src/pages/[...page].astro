@@ -14,7 +14,7 @@ export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
   })
   const postsContents: PostItem[] = postsData.items
 
-  return paginate(postsContents, { pageSize: 10 })
+  return paginate(postsContents, { pageSize: 1 })
 }
 
 const kvTitleEn = 'all'

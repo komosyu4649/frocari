@@ -6,9 +6,11 @@ const Search = () => {
       ? new URLSearchParams(window.location.search).get('q') ?? ''
       : ''
   )
+
   const handleChange = (event: any) => {
     setValue(event.target.value)
   }
+
   const handleSubmit = (event: any) => {
     event.preventDefault()
     window.location.href = `/search?q=${value}`
