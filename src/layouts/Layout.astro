@@ -3,12 +3,13 @@ import '@styles/global.scss'
 import '@styles/import.scss'
 import Header from '@components/Header.astro'
 import Footer from '@components/Footer.astro'
+import { env } from 'process'
 
 const { metaProps } = Astro.props
 const metaTitle = metaProps?.metaTitle
 const metaDescription = metaProps?.metaDescription
   ? metaProps.metaDescription
-  : ''
+  : import.meta.env.PUBLIC_SITE_DESCRIPTION
 ---
 
 <!DOCTYPE html>

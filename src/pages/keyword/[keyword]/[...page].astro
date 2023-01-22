@@ -10,7 +10,7 @@ import SideBar from '@components/SideBar.astro'
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
   const keywordsData: KeywordData = await client.getContents({
     appUid: import.meta.env.PUBLIC_NEWT_APP_UID,
-    modelUid: import.meta.env.PUBLIC_NEWT_MODEL_Keyword,
+    modelUid: import.meta.env.PUBLIC_NEWT_MODEL_KEYWORD,
   })
   const keywordsContents: KeywordItem[] = keywordsData.items
 

@@ -4,7 +4,7 @@ import type { KeywordData, KeywordItem } from '@type/index'
 
 const keywordData: KeywordData = await client.getContents({
   appUid: import.meta.env.PUBLIC_NEWT_APP_UID,
-  modelUid: import.meta.env.PUBLIC_NEWT_MODEL_Keyword,
+  modelUid: import.meta.env.PUBLIC_NEWT_MODEL_KEYWORD,
 })
 const keywordItems: KeywordItem[] = keywordData.items
 ---
