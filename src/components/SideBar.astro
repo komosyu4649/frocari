@@ -2,7 +2,7 @@
 import Breadcrumb from './Breadcrumb.astro'
 import Keywords from './Keywords.astro'
 // import Search from './Search.astro'
-import Search from './Search.tsx'
+// import Search from './Search.tsx'
 import Banner from './Banner.astro'
 
 const { breadcrumbItems } = Astro.props
@@ -10,7 +10,7 @@ const { breadcrumbItems } = Astro.props
 
 <section class="container">
   {breadcrumbItems && <Breadcrumb breadcrumbItems={breadcrumbItems} />}
-  <Search />
+  <!-- <Search client:load /> -->
   <Keywords />
   <Banner />
 </section>

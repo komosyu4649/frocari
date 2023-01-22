@@ -14,15 +14,20 @@ const Search = () => {
   const handleSubmit = (event: any) => {
     event.preventDefault()
     window.location.href = `/search?q=${value}`
+    localStorage.setItem('searchResult', value)
   }
 
   return (
-    <form role="search" className="container" onSubmit={handleSubmit}>
+    <form
+      role="search"
+      className={`container ${value}`}
+      onSubmit={handleSubmit}
+    >
       <input
         type="search"
         onChange={handleChange}
         value={value}
-        className="input"
+        className={`input ${value}`}
         placeholder="どんな記事をお探しですか？"
       />
       <button className="button">

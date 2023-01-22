@@ -6,12 +6,33 @@ import Layout from '@layouts/Layout.astro'
 import SideBar from '@components/SideBar.astro'
 import MainPosts from '@components/MainPosts.astro'
 import PopularPosts from '@components/PopularPosts.astro'
+import useSearchResult from '@components/useSearchResult'
+import { match } from 'assert'
+import SearchResultPosts from '@components/SearchResultPosts'
+
+// console.log(q)
+// const { test } = useSearchResult()
+// console.log(test)
+// console.log(111, queryParam)
+// useSearchResult()
+// console.log(queryParam)
+// const url = new URL(Astro.request.url)
+// console.log(url)
+// console.log(Astro.url)
+// console.log(Astro.url().query.search)
+// const search = Astro.url.searchParams.get('search')! || '999'
+// console.log(search)
+// console.log(Astro.url.searchParams.get('search'))
+
+// const localStrage = Astro.storage.local
 
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
   const postsData: PostData = await client.getContents({
     appUid: import.meta.env.PUBLIC_NEWT_APP_UID,
     modelUid: import.meta.env.PUBLIC_NEWT_MODEL_POST,
+    // query: { title: { match: '試験' } },
   })
+
   const postsContents: PostItem[] = postsData.items
 
   return paginate(postsContents, { pageSize: 10 })
@@ -29,11 +50,13 @@ const pageProps = { page }
 <Layout>
   <main class="container">
     <div class="main">
+      <!-- <SearchResult client:only /> -->
       <MainPosts
         kvProps={kvProps}
         pageProps={pageProps}
         postsContents={page.data}
       />
+      <!-- <SearchResultPosts client:only /> -->
       <PopularPosts />
     </div>
     <SideBar />
@@ -41,7 +64,7 @@ const pageProps = { page }
 </Layout>
 
 <style lang="scss">
-  @use '../styles/variable' as var;
+  @use '../../styles/variable' as var;
 
   .container {
     display: grid;
