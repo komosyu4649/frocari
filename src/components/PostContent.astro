@@ -89,11 +89,15 @@ const toc = headings.map((data) => {
   <!-- body -->
   <div class="body">
     <!-- intro -->
-    <div class="bodyIntro">
-      <p class="c-text__default">
-        {postsContent.introduction}
-      </p>
-    </div>
+    {
+      postsContent.introduction && (
+        <div class="bodyIntro">
+          <p class="c-text__default bodyIntroText">
+            {postsContent.introduction}
+          </p>
+        </div>
+      )
+    }
     <!-- toc -->
     <div class="bodyToc">
       <p class="c-title__md bodyTocTitle">目次</p>
@@ -196,6 +200,9 @@ const toc = headings.map((data) => {
     background-color: var(--color-white);
     border: 1px solid var(--color-black);
     border-radius: 1.5rem;
+  }
+  .bodyIntroText {
+    // white-space: break-spaces;
   }
   .bodyToc {
     margin-top: 3rem;
